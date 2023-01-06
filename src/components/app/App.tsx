@@ -6,13 +6,18 @@ import { Circle } from '../Circle'
 import { Home } from '../pages/home'
 
 export function App () {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+  const [theme, setTheme] = useState<'dark' | 'light'>('light')
 
   const currentTheme = useMemo(() => {
     return themes[theme] || themes.dark
   }, [theme])
 
   const handleToggleTheme = () => {
+    // setTheme(prevState => {
+    //   const theme = prevState === 'dark' ? 'light' : 'dark'
+    //   localStorage.setItem('theme', JSON.stringify(theme))
+    //   return theme
+    // })
     setTheme(prevState => prevState === 'dark' ? 'light' : 'dark')
   }
 
