@@ -8,6 +8,10 @@ export default createGlobalStyle`
     font-family: 'Chivo', sans-serif;
     transition: background-color 0.5s ease-in, border-color 0.5s ease-in, box-shadow 0.5s ease-in;
   }
+  h1 {
+    font-weight: 100;
+  }
+
   body {
     background: ${({ theme }) => theme.colors.background};
     font-size: 20px;

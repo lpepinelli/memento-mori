@@ -8,7 +8,8 @@ declare module 'styled-components' {
       primary: {
         light: string,
         main: string,
-        dark: string
+        dark: string,
+        darkHover: string
       },
     }
   }

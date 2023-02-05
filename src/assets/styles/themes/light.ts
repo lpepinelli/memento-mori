@@ -7,7 +7,8 @@ export const light: DefaultTheme = {
     primary: {
       light: '#F29343',
       main: '#E7580D',
-      dark: '#C1410C'
+      dark: '#C1410C',
+      darkHover: '#D7490E'
     }
   }
 }

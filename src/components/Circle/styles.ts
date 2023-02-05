@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-export const CircleContainer = styled.button`
+export const CircleContainer = styled(motion.button)`
   width: 200px;
   height: 200px;
   background: ${({ theme }) => theme.colors.primary.main};
