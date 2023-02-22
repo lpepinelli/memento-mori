@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   align-self: center;
   background: ${({ theme }) => theme.colors.primary.dark};
   color: ${({ theme }) => theme.colors.primary.light};

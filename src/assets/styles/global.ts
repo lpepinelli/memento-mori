@@ -8,8 +8,21 @@ export default createGlobalStyle`
     font-family: 'Chivo', sans-serif;
     transition: background-color 0.5s ease-in, border-color 0.5s ease-in, box-shadow 0.5s ease-in;
   }
+
   h1 {
     font-weight: 100;
+  }
+
+  input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    height: 35px;
+    width: 100px;
+    outline: none;
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
   }
 
   body {

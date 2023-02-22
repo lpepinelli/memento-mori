@@ -1,21 +1,25 @@
-import { Container, DarkContainer } from './styles'
-import { BsArrowRight } from 'react-icons/bs'
+import { useContext } from 'react'
+import { DarkContainer } from './styles'
 import { FaQuoteRight } from 'react-icons/fa'
 import { Button } from '../../Button'
 import { Card } from '../../Card'
+import { pagesContext } from '../../../context/pagesContext'
+import { Wrapper } from '../../Wrapper'
 
-interface HomeProps {
-  onPageChange: (pageNumber: number) => void
-}
-
-export function Home ({ onPageChange }: HomeProps) {
+export function Home () {
+  const { handlePageChange } = useContext(pagesContext)
   return (
-    <Container>
+    <Wrapper align='center'>
       <Card
         height={800}
         width={700}
         mdHeight={600}
         mdWidth={600}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.7, ease: 'easeInOut' }}
+        shadowDirection='lowerLeftCorner'
       >
         <DarkContainer>
           <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer">
@@ -31,8 +35,8 @@ export function Home ({ onPageChange }: HomeProps) {
           <p>Meditating on your mortality is only depressing if you miss the point. It is in fact a tool to create priority and meaning. It’s a tool that generations have used to create real perspective and urgency. To treat our time as a gift and not waste it on the trivial and vain. Death doesn’t make life pointless but rather purposeful. And fortunately, we don’t have to nearly die to tap into this. A simple reminder can bring us closer to living the life we want.</p>
         </DarkContainer>
         <p>If you want to continue, click the button below. Clock is ticking...</p>
-        <Button onClick={() => onPageChange(1)}><BsArrowRight /></Button>
+        <Button action={() => handlePageChange(1)} />
       </Card>
-    </Container>
+    </Wrapper>
   )
 }
