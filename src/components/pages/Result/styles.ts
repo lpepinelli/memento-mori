@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import { motion } from 'framer-motion'
 interface ContainerValueProps {
   readonly height: number;
   readonly mdHeight: number;
@@ -35,7 +35,7 @@ export const ResultWrapper = styled.div`
   display: flex;
 `
 
-export const ContainerValue = styled.div<ContainerValueProps>`
+export const ContainerValue = styled(motion.div)<ContainerValueProps>`
   display: flex;
   align-items: center;
   justify-content: center;

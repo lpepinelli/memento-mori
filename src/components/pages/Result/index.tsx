@@ -62,19 +62,19 @@ export default function Result ({ age, expectation }: ResultProps) {
   const suggestions = [
     {
       icon: <GoBook />,
-      description: 'If you read 1 book every 2 months, you will have read 330 books.'
+      description: `If you read 1 book every 2 months, you will have read ${months / 2} books.`
     },
     {
       icon: <TiPlaneOutline />,
-      description: 'If you visit 2 countries a year, you will have known 110 countries.'
+      description: `If you visit 2 countries a year, you will have known ${years} countries.`
     },
     {
       icon: <BsTranslate />,
-      description: 'If you learn 1 language every 6.000 hours, you will have learned 75 languages.'
+      description: `If you learn 1 language every 8.000 hours, you will have learned ${Math.ceil(hours / 8000)} languages.`
     },
     {
       icon: <MdOutlineAttachMoney />,
-      description: 'If you save $200 every month you will reach 1M by the age of 20 years'
+      description: `If you save and invest $500 every month you will reach 1M by the age of ${age + 34} years`
     }
   ]
 
@@ -98,7 +98,7 @@ export default function Result ({ age, expectation }: ResultProps) {
           <ResultContainer>
             {results.map(({ label, value }) => (
               <ResultWrapper key={label}>
-                <ContainerValue width={250} mdWidth={225} height={60} mdHeight={50}>
+                <ContainerValue width={250} mdWidth={225} height={60} mdHeight={50} animate={{ opacity: 1 }}>
                   {label === 'Hours'
                     ? (
                         <h2>{value.split('-')[0]}

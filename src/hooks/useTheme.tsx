@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
 import themes from '../assets/styles/themes'
+import useLocalState from './useLocalState'
 
 export default function useTheme () {
-  const [theme, setTheme] = useState<'dark' | 'light'>('light')
+  const [theme, setTheme] = useLocalState<'dark' | 'light'>('light')
 
   const currentTheme = useMemo(() => {
     return themes[theme] || themes.dark
