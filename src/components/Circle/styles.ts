@@ -10,4 +10,9 @@ export const CircleContainer = styled(motion.button)`
   position: absolute;
   right: 20px;
   top: 10px;
+
+  @media (max-height: 768px) {
+    width: 180px;
+    height: 180px;
+  }
 `

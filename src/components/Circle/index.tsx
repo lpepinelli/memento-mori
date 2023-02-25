@@ -44,7 +44,7 @@ export function Circle ({ onToggleTheme }: CircleProps) {
     },
     2: {
       y: [null, lowerLeftCorner],
-      x: [upperLeftCorner, upperLeftCorner - 100, upperLeftCorner],
+      x: [upperLeftCorner, upperLeftCorner - 130, upperLeftCorner],
       opacity: 1,
       transition: {
         duration: 2

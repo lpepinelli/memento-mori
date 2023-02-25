@@ -4,3 +4,7 @@ export function diferenceBetweenDates (years: number) {
 
   return expect - today
 }
+
+export function padTo2Digits (num: number) {
+  return num.toString().padStart(2, '0')
+}

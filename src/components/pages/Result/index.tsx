@@ -1,7 +1,12 @@
-import { useMemo, useState } from 'react'
-import { diferenceBetweenDates } from '../../../utils/date'
+import { useEffect, useMemo, useState } from 'react'
+import { diferenceBetweenDates, padTo2Digits } from '../../../utils/date'
 import { Card } from '../../Card'
 import { Wrapper } from '../../Wrapper'
+import { GoBook } from 'react-icons/go'
+import { TiPlaneOutline } from 'react-icons/ti'
+import { BsTranslate } from 'react-icons/bs'
+import { MdOutlineAttachMoney } from 'react-icons/md'
+import { ContainerValue, ResultContainer, Title, ResultWrapper, Container } from './styles'
 
 interface ResultProps {
   age: number,
@@ -9,39 +14,67 @@ interface ResultProps {
 }
 
 export default function Result ({ age, expectation }: ResultProps) {
-  const diffTime = useMemo(() => diferenceBetweenDates(expectation - age), [age, expectation])
+  const [diffTime, setDiffTime] = useState(diferenceBetweenDates(expectation - age))
   const decades = useMemo(() => (expectation - age) / 10, [age, expectation])
   const years = useMemo(() => (expectation - age), [age, expectation])
   const months = useMemo(() => (years * 12), [years])
   const weeks = useMemo(() => Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 7)), [diffTime])
   const days = useMemo(() => Math.ceil(diffTime / (1000 * 60 * 60 * 24)), [diffTime])
-  const hours = useMemo(() => Math.ceil(diffTime / (1000 * 60 * 60)), [diffTime])
-  const [seconds, setSeconds] = useState(hours * 60 * 60)
+  const seconds = useMemo(() => Math.floor(diffTime / 1000), [diffTime])
+  const minutes = useMemo(() => Math.floor(seconds / 60), [seconds])
+  const hours = useMemo(() => Math.floor(minutes / 60), [minutes])
+  // const [seconds, setSeconds] = useState(hours * 60 * 60)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDiffTime(prevDiff => prevDiff - 1000)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   const results = [
     {
       label: 'Hours',
-      value: hours
+      value: `${hours.toLocaleString('pt-BR')}-${padTo2Digits(minutes % 60)}-${padTo2Digits(seconds % 60)}`
     },
     {
       label: 'Days',
-      value: days
+      value: days.toLocaleString('pt-BR') // 'en-US'
     },
     {
       label: 'Weeks',
-      value: weeks
+      value: weeks.toLocaleString('pt-BR') // 'en-US'
     },
     {
       label: 'Months',
-      value: months
+      value: months.toLocaleString('pt-BR') // 'en-US'
     },
     {
       label: 'Years',
-      value: years
+      value: years.toLocaleString('pt-BR') // 'en-US'
     },
     {
       label: 'Decades',
-      value: decades
+      value: decades.toLocaleString('pt-BR') // 'en-US'
+    }
+  ]
+
+  const suggestions = [
+    {
+      icon: <GoBook />,
+      description: 'If you read 1 book every 2 months, you will have read 330 books.'
+    },
+    {
+      icon: <TiPlaneOutline />,
+      description: 'If you visit 2 countries a year, you will have known 110 countries.'
+    },
+    {
+      icon: <BsTranslate />,
+      description: 'If you learn 1 language every 6.000 hours, you will have learned 75 languages.'
+    },
+    {
+      icon: <MdOutlineAttachMoney />,
+      description: 'If you save $200 every month you will reach 1M by the age of 20 years'
     }
   ]
 
@@ -50,20 +83,48 @@ export default function Result ({ age, expectation }: ResultProps) {
       <Card
         height={650}
         width={1150}
-        mdHeight={420}
-        mdWidth={950}
+        mdHeight={440}
+        mdWidth={900}
         marginTop={300}
-        mdMarginTop={220}
+        mdMarginTop={200}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 1 } }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.7, ease: 'easeInOut' }}
         shadowDirection='lowerCentered'
       >
-        <h1>You have:</h1>
-        {results.map(({ label, value }) => (
-          <h1 key={label}>{`${label} - ${value}`}</h1>
-        ))}
+        <Title>You have:</Title>
+        <Container>
+          <ResultContainer>
+            {results.map(({ label, value }) => (
+              <ResultWrapper key={label}>
+                <ContainerValue width={250} mdWidth={225} height={60} mdHeight={50}>
+                  {label === 'Hours'
+                    ? (
+                        <h2>{value.split('-')[0]}
+                          <span>:{value.split('-')[1]}</span>
+                          <small>:{value.split('-')[2]}</small>
+                        </h2>
+                      )
+                    : (
+                        <h2>{value}</h2>
+                      )
+                  }
+
+                </ContainerValue>
+                <ContainerValue width={150} mdWidth={150} height={60} mdHeight={50} bgColor='dark'><h2>{label}</h2></ContainerValue>
+              </ResultWrapper>
+            ))}
+          </ResultContainer>
+          <ResultContainer>
+            {suggestions.map(({ icon, description }, i) => (
+              <ResultWrapper key={i}>
+                <ContainerValue width={60} mdWidth={60} height={70} mdHeight={70} ><h1>{icon}</h1></ContainerValue>
+                <ContainerValue width={400} mdWidth={375} height={70} mdHeight={70} bgColor='dark'><p>{description}</p></ContainerValue>
+              </ResultWrapper>
+            ))}
+          </ResultContainer>
+        </Container>
       </Card>
     </Wrapper>
   )
