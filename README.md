@@ -12,6 +12,8 @@ MVP
 - [ ] botão de voltar uma tela
 - [ ] fazer a animação inversa ao voltar uma tela
 - [ ] Salvar a pagina atual no local storage
-- [ ] Salvar o theme atual no local storage
+- [x] Salvar o theme atual no local storage
 - [ ] Ícone de interrogação na sugestão de investimento
 - [ ] Tratar os casos extremos de age and expectation
+
+- [?] Travar as opções de expectation

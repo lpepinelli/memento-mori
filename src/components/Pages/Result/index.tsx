@@ -96,9 +96,9 @@ export default function Result ({ age, expectation }: ResultProps) {
         <Title>You have:</Title>
         <Container>
           <ResultContainer>
-            {results.map(({ label, value }) => (
-              <ResultWrapper key={label}>
-                <ContainerValue width={250} mdWidth={225} height={60} mdHeight={50} animate={{ opacity: 1 }}>
+            {results.map(({ label, value }, i) => (
+              <ResultWrapper key={label} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: (0.7 * i) + 1.5, duration: 0.7 } }}>
+                <ContainerValue width={250} mdWidth={225} height={60} mdHeight={50}>
                   {label === 'Hours'
                     ? (
                         <h2>{value.split('-')[0]}

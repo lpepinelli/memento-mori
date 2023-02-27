@@ -43,7 +43,7 @@ export function Circle ({ onToggleTheme }: CircleProps) {
       }
     },
     2: {
-      y: [null, lowerLeftCorner],
+      y: [0, lowerLeftCorner],
       x: [upperLeftCorner, upperLeftCorner - 130, upperLeftCorner],
       opacity: 1,
       transition: {
@@ -66,8 +66,8 @@ export function Circle ({ onToggleTheme }: CircleProps) {
       transition: { repeat: Infinity }
     },
     4: {
-      x: [null, -centerX],
-      y: [null, 0],
+      x: [-centerX, -centerX],
+      y: [centerY, 0],
       opacity: 1,
       transition: {
         duration: 1

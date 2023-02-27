@@ -19,7 +19,7 @@ export const Container = styled.div`
   gap: 10px;
 `
 
-export const ResultContainer = styled.div`
+export const ResultContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -31,11 +31,11 @@ export const ResultContainer = styled.div`
   }
   `
 
-export const ResultWrapper = styled.div`
+export const ResultWrapper = styled(motion.div)`
   display: flex;
 `
 
-export const ContainerValue = styled(motion.div)<ContainerValueProps>`
+export const ContainerValue = styled.div<ContainerValueProps>`
   display: flex;
   align-items: center;
   justify-content: center;

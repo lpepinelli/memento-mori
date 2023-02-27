@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext } from 'react'
+import useLocalState from '../hooks/useLocalState'
 
 interface PagesContextTypes {
   currentPage: number
@@ -8,7 +9,7 @@ interface PagesContextTypes {
 const pagesContext = createContext({} as PagesContextTypes)
 
 function PagesProvider ({ children }: { children?: React.ReactNode }) {
-  const [currentPage, setCurrentPage] = useState(0)
+  const [currentPage, setCurrentPage] = useLocalState('currentPage', 0)
 
   function handlePageChange (pageNumber: number) {
     setCurrentPage(pageNumber)
