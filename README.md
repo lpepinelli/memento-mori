@@ -15,5 +15,5 @@ MVP
 - [x] Salvar o theme atual no local storage
 - [ ] Ícone de interrogação na sugestão de investimento
 - [ ] Tratar os casos extremos de age and expectation
-
+- [?] Devo deixar a expectativa travada em 100 ?
 - [?] Travar as opções de expectation

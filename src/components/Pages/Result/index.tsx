@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { ReactElement, useEffect, useMemo, useState } from 'react'
 import { diferenceBetweenDates, padTo2Digits } from '../../../utils/date'
 import { Card } from '../../Card'
 import { Wrapper } from '../../Wrapper'
@@ -7,6 +7,7 @@ import { TiPlaneOutline } from 'react-icons/ti'
 import { BsTranslate } from 'react-icons/bs'
 import { MdOutlineAttachMoney } from 'react-icons/md'
 import { ContainerValue, ResultContainer, Title, ResultWrapper, Container } from './styles'
+import { AnimatePresence } from 'framer-motion'
 
 interface ResultProps {
   age: number,
@@ -23,6 +24,8 @@ export default function Result ({ age, expectation }: ResultProps) {
   const seconds = useMemo(() => Math.floor(diffTime / 1000), [diffTime])
   const minutes = useMemo(() => Math.floor(seconds / 60), [seconds])
   const hours = useMemo(() => Math.floor(minutes / 60), [minutes])
+  const [suggestions, setSuggestions] = useState<Array<{ icon: ReactElement, description: string }>>([])
+  // const [title, setTitle] = useState('You have:')
   // const [seconds, setSeconds] = useState(hours * 60 * 60)
 
   useEffect(() => {
@@ -59,24 +62,29 @@ export default function Result ({ age, expectation }: ResultProps) {
     }
   ]
 
-  const suggestions = [
-    {
-      icon: <GoBook />,
-      description: `If you read 1 book every 2 months, you will have read ${months / 2} books.`
-    },
-    {
-      icon: <TiPlaneOutline />,
-      description: `If you visit 2 countries a year, you will have known ${years} countries.`
-    },
-    {
-      icon: <BsTranslate />,
-      description: `If you learn 1 language every 8.000 hours, you will have learned ${Math.ceil(hours / 8000)} languages.`
-    },
-    {
-      icon: <MdOutlineAttachMoney />,
-      description: `If you save and invest $500 every month you will reach 1M by the age of ${age + 34} years`
-    }
-  ]
+  useEffect(() => {
+    const timeouId = setTimeout(() => {
+      setSuggestions([
+        {
+          icon: <GoBook />,
+          description: `If you read 1 book every 2 months, you will have read ${months / 2} books.`
+        },
+        {
+          icon: <TiPlaneOutline />,
+          description: `If you visit 2 countries a year, you will have known ${years} countries.`
+        },
+        {
+          icon: <BsTranslate />,
+          description: `If you learn 1 language every 8.000 hours, you will have learned ${Math.ceil(hours / 8000)} languages.`
+        },
+        {
+          icon: <MdOutlineAttachMoney />,
+          description: `If you save and invest $500 every month you will reach 1M by the age of ${age + 34} years`
+        }
+      ])
+    }, 10000)
+    return () => clearTimeout(timeouId)
+  }, [])
 
   return (
     <Wrapper align='flex-start'>
@@ -93,8 +101,25 @@ export default function Result ({ age, expectation }: ResultProps) {
         transition={{ duration: 0.7, ease: 'easeInOut' }}
         shadowDirection='lowerCentered'
       >
-        <Title>You have:</Title>
-        <Container>
+      <AnimatePresence mode='wait'>
+        {suggestions.length === 0
+          ? (
+            <Title
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { delay: 1 } }}
+              exit={{ opacity: 0 }}>
+                You have:
+            </Title>
+            )
+          : (
+              <Title
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { delay: 1 } }}>
+                With this time you can:
+              </Title>
+            )}
+            </AnimatePresence>
+        <Container justifyContent='center'>
           <ResultContainer>
             {results.map(({ label, value }, i) => (
               <ResultWrapper key={label} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: (0.7 * i) + 1.5, duration: 0.7 } }}>

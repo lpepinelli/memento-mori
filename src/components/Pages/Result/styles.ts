@@ -8,14 +8,18 @@ interface ContainerValueProps {
   readonly bgColor?: 'light' | 'dark';
 }
 
-export const Title = styled.h1`
+interface ContainerProps {
+  readonly justifyContent?: string
+}
+
+export const Title = styled(motion.h1)`
   display: flex;
   justify-content: center;
   margin-bottom: 8px;
 `
-export const Container = styled.div`
+export const Container = styled.div<ContainerProps>`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ justifyContent }) => justifyContent || 'center'};
   gap: 10px;
 `
 
