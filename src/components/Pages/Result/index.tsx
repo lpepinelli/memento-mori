@@ -25,6 +25,7 @@ export default function Result ({ age, expectation }: ResultProps) {
   const minutes = useMemo(() => Math.floor(seconds / 60), [seconds])
   const hours = useMemo(() => Math.floor(minutes / 60), [minutes])
   const [suggestions, setSuggestions] = useState<Array<{ icon: ReactElement, description: string }>>([])
+  const [startAnimation, setStartAnimation] = useState(false)
   // const [title, setTitle] = useState('You have:')
   // const [seconds, setSeconds] = useState(hours * 60 * 60)
 
@@ -63,7 +64,10 @@ export default function Result ({ age, expectation }: ResultProps) {
   ]
 
   useEffect(() => {
-    const timeouId = setTimeout(() => {
+    const timeouSuggestAnimationId = setTimeout(() => {
+      setStartAnimation(true)
+    }, 6000)
+    const timeouSuggestArrayId = setTimeout(() => {
       setSuggestions([
         {
           icon: <GoBook />,
@@ -82,8 +86,11 @@ export default function Result ({ age, expectation }: ResultProps) {
           description: `If you save and invest $500 every month you will reach 1M by the age of ${age + 34} years`
         }
       ])
-    }, 10000)
-    return () => clearTimeout(timeouId)
+    }, 8000)
+    return () => {
+      clearTimeout(timeouSuggestAnimationId)
+      clearTimeout(timeouSuggestArrayId)
+    }
   }, [])
 
   return (
@@ -101,25 +108,31 @@ export default function Result ({ age, expectation }: ResultProps) {
         transition={{ duration: 0.7, ease: 'easeInOut' }}
         shadowDirection='lowerCentered'
       >
-      <AnimatePresence mode='wait'>
-        {suggestions.length === 0
+      <AnimatePresence>
+        {!startAnimation
           ? (
             <Title
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 1 } }}
-              exit={{ opacity: 0 }}>
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7, ease: 'easeInOut' }}>
                 You have:
             </Title>
             )
           : (
               <Title
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { delay: 1 } }}>
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7, ease: 'easeInOut' }}>
                 With this time you can:
               </Title>
             )}
             </AnimatePresence>
-        <Container justifyContent='center'>
+        <Container
+          layout
+          style={{ justifyContent: !startAnimation ? 'center' : 'flex-start', marginLeft: !startAnimation ? undefined : 10 }}
+          // justifyContent={!startAnimation ? 'center' : 'flex-start'}
+          transition={{ duration: 2 }}>
           <ResultContainer>
             {results.map(({ label, value }, i) => (
               <ResultWrapper key={label} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: (0.7 * i) + 1.5, duration: 0.7 } }}>
@@ -143,7 +156,7 @@ export default function Result ({ age, expectation }: ResultProps) {
           </ResultContainer>
           <ResultContainer>
             {suggestions.map(({ icon, description }, i) => (
-              <ResultWrapper key={i}>
+              <ResultWrapper key={i} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: (0.7 * i) + 1.5, duration: 0.7 } }}>
                 <ContainerValue width={60} mdWidth={60} height={70} mdHeight={70} ><h1>{icon}</h1></ContainerValue>
                 <ContainerValue width={400} mdWidth={375} height={70} mdHeight={70} bgColor='dark'><p>{description}</p></ContainerValue>
               </ResultWrapper>

@@ -17,10 +17,11 @@ export const Title = styled(motion.h1)`
   justify-content: center;
   margin-bottom: 8px;
 `
-export const Container = styled.div<ContainerProps>`
+export const Container = styled(motion.div)<ContainerProps>`
   display: flex;
-  justify-content: ${({ justifyContent }) => justifyContent || 'center'};
+  /* justify-content: ${({ justifyContent }) => justifyContent || 'center'}; */
   gap: 10px;
+  /* background-color: aliceblue; */
 `
 
 export const ResultContainer = styled(motion.div)`
@@ -39,7 +40,7 @@ export const ResultWrapper = styled(motion.div)`
   display: flex;
 `
 
-export const ContainerValue = styled.div<ContainerValueProps>`
+export const ContainerValue = styled(motion.div)<ContainerValueProps>`
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useRef, KeyboardEvent } from 'react'
 import { pagesContext } from '../../../context/pagesContext'
 import { Button } from '../../Button'
 import { Card } from '../../Card'
@@ -12,6 +12,18 @@ interface FirstQuestionProps {
 
 export function FirstQuestion ({ age, onAgeChange }: FirstQuestionProps) {
   const { handlePageChange } = useContext(pagesContext)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    inputRef?.current?.focus()
+  }, [])
+
+  function handleKeypress (e: KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter' && age !== '') {
+      handlePageChange(2)
+    }
+  };
+
   return (
     <Wrapper align='flex-start'>
       <Card
@@ -29,7 +41,12 @@ export function FirstQuestion ({ age, onAgeChange }: FirstQuestionProps) {
       >
         <Container>
           <h1>How old are you ?</h1>
-          <input type='text' value={age} onChange={({ target }) => onAgeChange(target.value)}/>
+          <input
+            ref={inputRef}
+            type='text'
+            value={age}
+            onChange={({ target }) => onAgeChange(target.value)}
+            onKeyDown={handleKeypress}/>
           <Button action={() => handlePageChange(2)} disabled={age === ''} />
         </Container>
       </Card>
