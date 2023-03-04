@@ -86,7 +86,7 @@ export default function Result ({ age, expectation }: ResultProps) {
           description: `If you save and invest $500 every month you will reach 1M by the age of ${age + 34} years`
         }
       ])
-    }, 8000)
+    }, 6500)
     return () => {
       clearTimeout(timeouSuggestAnimationId)
       clearTimeout(timeouSuggestArrayId)
@@ -108,32 +108,31 @@ export default function Result ({ age, expectation }: ResultProps) {
         transition={{ duration: 0.7, ease: 'easeInOut' }}
         shadowDirection='lowerCentered'
       >
-      <AnimatePresence>
+      <AnimatePresence mode='wait'>
         {!startAnimation
-          ? (
-            <Title
+          ? <Title
+              key="firstTitle"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 1 } }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7, ease: 'easeInOut' }}>
                 You have:
             </Title>
-            )
-          : (
-              <Title
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, ease: 'easeInOut' }}>
-                With this time you can:
-              </Title>
-            )}
-            </AnimatePresence>
+          : <Title
+              key="secondTitle"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, ease: 'easeInOut' }}
+              exit={{ opacity: 0 }}>
+              With this time you can:
+            </Title>
+            }
+        </AnimatePresence>
         <Container
-          layout
-          style={{ justifyContent: !startAnimation ? 'center' : 'flex-start', marginLeft: !startAnimation ? undefined : 10 }}
-          // justifyContent={!startAnimation ? 'center' : 'flex-start'}
-          transition={{ duration: 2 }}>
-          <ResultContainer>
+          style={{ marginLeft: !startAnimation ? undefined : 10 }}
+          justifyContent={!startAnimation ? 'center' : 'flex-start'}
+          transition={{ type: 'tween', duration: 2 }}>
+          <ResultContainer layout transition={{ duration: 1.5 }}>
             {results.map(({ label, value }, i) => (
               <ResultWrapper key={label} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: (0.7 * i) + 1.5, duration: 0.7 } }}>
                 <ContainerValue width={250} mdWidth={225} height={60} mdHeight={50}>

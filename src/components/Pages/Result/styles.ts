@@ -19,7 +19,7 @@ export const Title = styled(motion.h1)`
 `
 export const Container = styled(motion.div)<ContainerProps>`
   display: flex;
-  /* justify-content: ${({ justifyContent }) => justifyContent || 'center'}; */
+  justify-content: ${({ justifyContent }) => justifyContent || 'center'};
   gap: 10px;
   /* background-color: aliceblue; */
 `
