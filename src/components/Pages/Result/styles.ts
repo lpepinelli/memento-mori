@@ -38,6 +38,23 @@ export const ResultContainer = styled(motion.div)`
 
 export const ResultWrapper = styled(motion.div)`
   display: flex;
+  position: relative;
+
+  .questionTooltip {
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    color: ${({ theme }) => theme.colors.primary.light};
+    opacity: 0;
+    /* border: 1px solid red; */
+    transition: color 0.5s ease-in, opacity 0.2s ease-in;
+  }
+
+  &:hover {
+    .questionTooltip {
+      opacity: 1;
+    }
+  }
 `
 
 export const ContainerValue = styled(motion.div)<ContainerValueProps>`

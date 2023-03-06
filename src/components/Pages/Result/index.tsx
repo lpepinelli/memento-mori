@@ -8,10 +8,19 @@ import { BsTranslate } from 'react-icons/bs'
 import { MdOutlineAttachMoney } from 'react-icons/md'
 import { ContainerValue, ResultContainer, Title, ResultWrapper, Container } from './styles'
 import { AnimatePresence } from 'framer-motion'
+import { Tooltip } from 'react-tooltip'
+import { FaRegQuestionCircle } from 'react-icons/fa'
+import { yearsToReach1M } from '../../../utils/financialCalc'
 
 interface ResultProps {
   age: number,
   expectation: number
+}
+
+interface SuggestionsType {
+  icon: ReactElement,
+  description: string,
+  explanation?: string
 }
 
 export default function Result ({ age, expectation }: ResultProps) {
@@ -24,7 +33,7 @@ export default function Result ({ age, expectation }: ResultProps) {
   const seconds = useMemo(() => Math.floor(diffTime / 1000), [diffTime])
   const minutes = useMemo(() => Math.floor(seconds / 60), [seconds])
   const hours = useMemo(() => Math.floor(minutes / 60), [minutes])
-  const [suggestions, setSuggestions] = useState<Array<{ icon: ReactElement, description: string }>>([])
+  const [suggestions, setSuggestions] = useState<SuggestionsType[]>([])
   const [startAnimation, setStartAnimation] = useState(false)
   // const [title, setTitle] = useState('You have:')
   // const [seconds, setSeconds] = useState(hours * 60 * 60)
@@ -75,15 +84,16 @@ export default function Result ({ age, expectation }: ResultProps) {
         },
         {
           icon: <TiPlaneOutline />,
-          description: `If you visit 2 countries a year, you will have known ${years} countries.`
+          description: `If you visit 2 countries a year, you will have known ${years * 2} countries.`
         },
         {
           icon: <BsTranslate />,
-          description: `If you learn 1 language every 8.000 hours, you will have learned ${Math.ceil(hours / 8000)} languages.`
+          description: `If you use 2 hours a day for learning a new language, you will have learned ${Math.ceil((2 * days) / 8000)} languages.`,
+          explanation: 'Considering it takes 8,000 hours to learn a language'
         },
         {
           icon: <MdOutlineAttachMoney />,
-          description: `If you save and invest $500 every month you will reach 1M by the age of ${age + 34} years`
+          description: `If you save and invest $500 every month you will reach 1M by the age of ${yearsToReach1M(age)} years`
         }
       ])
     }, 6500)
@@ -154,12 +164,18 @@ export default function Result ({ age, expectation }: ResultProps) {
             ))}
           </ResultContainer>
           <ResultContainer>
-            {suggestions.map(({ icon, description }, i) => (
+            {suggestions.map(({ icon, description, explanation }, i) => (
               <ResultWrapper key={i} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: (0.7 * i) + 1.5, duration: 0.7 } }}>
+                {explanation && (
+                  <div className="questionTooltip" data-tooltip-content={explanation}>
+                    <FaRegQuestionCircle size={12} />
+                  </div>
+                )}
                 <ContainerValue width={60} mdWidth={60} height={70} mdHeight={70} ><h1>{icon}</h1></ContainerValue>
                 <ContainerValue width={400} mdWidth={375} height={70} mdHeight={70} bgColor='dark'><p>{description}</p></ContainerValue>
               </ResultWrapper>
             ))}
+            <Tooltip anchorSelect=".questionTooltip" />
           </ResultContainer>
         </Container>
       </Card>
