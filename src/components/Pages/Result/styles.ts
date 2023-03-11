@@ -15,7 +15,11 @@ interface ContainerProps {
 export const Title = styled(motion.h1)`
   display: flex;
   justify-content: center;
+  margin-bottom: 32px;
+
+  @media (max-height: 768px) {
   margin-bottom: 8px;
+  }
 `
 export const Container = styled(motion.div)<ContainerProps>`
   display: flex;
@@ -68,6 +72,10 @@ export const ContainerValue = styled(motion.div)<ContainerValueProps>`
                   ? theme.colors.primary.dark
                     : theme.colors.primary.main};
   border: 3px solid ${({ theme }) => theme.colors.primary.dark};
+
+  border-radius: ${({ bgColor }) => bgColor === 'dark'
+                    ? '0px 6px 6px 0px'
+                    : '6px 0px 0px 6px'};
 
   h2 span {
     font-size: 24px;

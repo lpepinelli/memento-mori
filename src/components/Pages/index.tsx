@@ -23,7 +23,7 @@ export default function Pages () {
   const pages = [
     <Home key={1} />,
     <FirstQuestion key={2} age={age} onAgeChange={handleAgeChange} />,
-    <SecondQuestion key={3} expectation={expectation} onExpectationChange={handleExpectationChange} />,
+    <SecondQuestion key={3} age={age} expectation={expectation} onExpectationChange={handleExpectationChange} />,
     <Loading key={4} />,
     <Result key={5} age={Number(age)} expectation={Number(expectation)}/>
   ]

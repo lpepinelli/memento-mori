@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, KeyboardEvent } from 'react'
+import { useContext, useEffect, useRef, KeyboardEvent, ChangeEvent } from 'react'
 import { pagesContext } from '../../../context/pagesContext'
 import { Button } from '../../Button'
 import { Card } from '../../Card'
@@ -6,11 +6,12 @@ import { Wrapper } from '../../Wrapper'
 import { Container } from './styles'
 
 interface SecondQuestionProps {
-  expectation?: string,
-  onExpectationChange: (age: string) => void
+  age: string,
+  expectation: string,
+  onExpectationChange: (expectation: string) => void
 }
 
-export function SecondQuestion ({ expectation, onExpectationChange }: SecondQuestionProps) {
+export function SecondQuestion ({ age, expectation, onExpectationChange }: SecondQuestionProps) {
   const { handlePageChange } = useContext(pagesContext)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -19,10 +20,20 @@ export function SecondQuestion ({ expectation, onExpectationChange }: SecondQues
   }, [])
 
   function handleKeypress (e: KeyboardEvent<HTMLInputElement>) {
-    if (e.key === 'Enter' && expectation !== '') {
+    if (e.key === 'Enter' && Number(expectation) > Number(age)) {
       handlePageChange(3)
     }
   };
+
+  function expectationChange ({ target }: ChangeEvent<HTMLInputElement>) {
+    let expectationInput = target.value.replace(/[^0-9]/g, '')
+    const maxLength = 3
+
+    if (expectationInput.length > maxLength) {
+      expectationInput = expectationInput.slice(0, maxLength)
+    }
+    onExpectationChange(expectationInput)
+  }
 
   return (
     <Wrapper align='flex-start'>
@@ -45,9 +56,9 @@ export function SecondQuestion ({ expectation, onExpectationChange }: SecondQues
             ref={inputRef}
             type='text'
             value={expectation}
-            onChange={({ target }) => onExpectationChange(target.value)}
+            onChange={expectationChange}
             onKeyDown={handleKeypress}/>
-          <Button action={() => handlePageChange(3)} disabled={expectation === ''} />
+          <Button action={() => handlePageChange(3)} disabled={Number(expectation) <= Number(age)} />
         </Container>
       </Card>
     </Wrapper>

@@ -145,7 +145,7 @@ export default function Result ({ age, expectation }: ResultProps) {
           <ResultContainer layout transition={{ duration: 1.5 }}>
             {results.map(({ label, value }, i) => (
               <ResultWrapper key={label} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: (0.7 * i) + 1.5, duration: 0.7 } }}>
-                <ContainerValue width={250} mdWidth={225} height={60} mdHeight={50}>
+                <ContainerValue width={350} mdWidth={225} height={70} mdHeight={50}>
                   {label === 'Hours'
                     ? (
                         <h2>{value.split('-')[0]}
@@ -159,7 +159,7 @@ export default function Result ({ age, expectation }: ResultProps) {
                   }
 
                 </ContainerValue>
-                <ContainerValue width={150} mdWidth={150} height={60} mdHeight={50} bgColor='dark'><h2>{label}</h2></ContainerValue>
+                <ContainerValue width={200} mdWidth={150} height={70} mdHeight={50} bgColor='dark'><h2>{label}</h2></ContainerValue>
               </ResultWrapper>
             ))}
           </ResultContainer>
@@ -171,8 +171,8 @@ export default function Result ({ age, expectation }: ResultProps) {
                     <FaRegQuestionCircle size={12} />
                   </div>
                 )}
-                <ContainerValue width={60} mdWidth={60} height={70} mdHeight={70} ><h1>{icon}</h1></ContainerValue>
-                <ContainerValue width={400} mdWidth={375} height={70} mdHeight={70} bgColor='dark'><p>{description}</p></ContainerValue>
+                <ContainerValue width={90} mdWidth={60} height={105} mdHeight={70} ><h1>{icon}</h1></ContainerValue>
+                <ContainerValue width={420} mdWidth={375} height={105} mdHeight={70} bgColor='dark'><p>{description}</p></ContainerValue>
               </ResultWrapper>
             ))}
             <Tooltip anchorSelect=".questionTooltip" />

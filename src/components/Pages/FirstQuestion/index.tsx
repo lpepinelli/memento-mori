@@ -45,7 +45,7 @@ export function FirstQuestion ({ age, onAgeChange }: FirstQuestionProps) {
             ref={inputRef}
             type='text'
             value={age}
-            onChange={({ target }) => onAgeChange(target.value)}
+            onChange={({ target }) => onAgeChange(target.value.replace(/[^0-9]/g, ''))}
             onKeyDown={handleKeypress}/>
           <Button action={() => handlePageChange(2)} disabled={age === ''} />
         </Container>
