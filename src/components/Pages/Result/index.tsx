@@ -1,5 +1,4 @@
 import { ReactElement, useEffect, useMemo, useState } from 'react'
-import { diferenceBetweenDates, padTo2Digits } from '../../../utils/date'
 import { Card } from '../../Card'
 import { Wrapper } from '../../Wrapper'
 import { GoBook } from 'react-icons/go'
@@ -10,7 +9,7 @@ import { ContainerValue, ResultContainer, Title, ResultWrapper, Container } from
 import { AnimatePresence } from 'framer-motion'
 import { Tooltip } from 'react-tooltip'
 import { FaRegQuestionCircle } from 'react-icons/fa'
-import { yearsToReach1M } from '../../../utils/financialCalc'
+import { knownCountries, yearsToReach1M, diferenceBetweenDates, padTo2Digits } from '../../../utils/suggestionsHelper'
 
 interface ResultProps {
   age: number,
@@ -84,11 +83,11 @@ export default function Result ({ age, expectation }: ResultProps) {
         },
         {
           icon: <TiPlaneOutline />,
-          description: `If you visit 2 countries a year, you will have known ${years * 2} countries.`
+          description: knownCountries(years)
         },
         {
           icon: <BsTranslate />,
-          description: `If you use 2 hours a day for learning a new language, you will have learned ${Math.ceil((2 * days) / 8000)} languages.`,
+          description: `If you use 1 hour a day for learning a new language, you will have learned ${Math.ceil((1 * days) / 8000)} languages.`,
           explanation: 'Considering it takes 8,000 hours to learn a language'
         },
         {

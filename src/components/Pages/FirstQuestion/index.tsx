@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, KeyboardEvent } from 'react'
+import { useContext, useEffect, useRef, KeyboardEvent, ChangeEvent } from 'react'
 import { pagesContext } from '../../../context/pagesContext'
 import { Button } from '../../Button'
 import { Card } from '../../Card'
@@ -19,10 +19,20 @@ export function FirstQuestion ({ age, onAgeChange }: FirstQuestionProps) {
   }, [])
 
   function handleKeypress (e: KeyboardEvent<HTMLInputElement>) {
-    if (e.key === 'Enter' && age !== '') {
+    if (e.key === 'Enter' && age !== '' && Number(age) <= 122) {
       handlePageChange(2)
     }
-  };
+  }
+
+  function handleAgeChange ({ target }: ChangeEvent<HTMLInputElement>) {
+    let expectationInput = target.value.replace(/[^0-9]/g, '')
+    const maxLength = 3
+
+    if (expectationInput.length > maxLength) {
+      expectationInput = expectationInput.slice(0, maxLength)
+    }
+    onAgeChange(expectationInput)
+  }
 
   return (
     <Wrapper align='flex-start'>
@@ -45,9 +55,9 @@ export function FirstQuestion ({ age, onAgeChange }: FirstQuestionProps) {
             ref={inputRef}
             type='text'
             value={age}
-            onChange={({ target }) => onAgeChange(target.value.replace(/[^0-9]/g, ''))}
+            onChange={handleAgeChange}
             onKeyDown={handleKeypress}/>
-          <Button action={() => handlePageChange(2)} disabled={age === ''} />
+          <Button action={() => handlePageChange(2)} disabled={age === '' || Number(age) > 122} />
         </Container>
       </Card>
     </Wrapper>

@@ -34,7 +34,7 @@ export function Circle ({ onToggleTheme }: CircleProps) {
 
   const variants = {
     0: { opacity: [0, 1] },
-    1: {
+    1: { // # FirstQuestion
       x: [0, upperLeftCorner],
       y: [0, -100, 0],
       opacity: 1,
@@ -42,17 +42,17 @@ export function Circle ({ onToggleTheme }: CircleProps) {
         duration: 2
       }
     },
-    2: {
-      y: [0, lowerLeftCorner],
+    2: { // # SecondQuestion
       x: [upperLeftCorner, upperLeftCorner - 130, upperLeftCorner],
+      y: [0, lowerLeftCorner],
       opacity: 1,
       transition: {
         duration: 2
       }
     },
-    3: {
-      x: [null, -centerX],
-      y: [null, centerY],
+    3: { // # LoadingPage
+      x: [null as any, -centerX],
+      y: [null as any, centerY],
       opacity: 1,
       transition: {
         duration: 2
@@ -65,12 +65,28 @@ export function Circle ({ onToggleTheme }: CircleProps) {
       scale: [1, 1.2, 1],
       transition: { repeat: Infinity }
     },
-    4: {
-      x: [-centerX, -centerX],
+    4: { // # ErrorPhrase
+      x: [-centerX, upperLeftCorner],
       y: [centerY, 0],
       opacity: 1,
       transition: {
+        duration: 2
+      }
+    },
+    5: { // # WarningPhrase
+      x: [-centerX, -centerX],
+      y: [centerY, centerY + 200],
+      opacity: 1,
+      transition: {
         duration: 1
+      }
+    },
+    6: { // # Result
+      x: [-centerX, -centerX],
+      y: [null as any, 0],
+      opacity: 1,
+      transition: {
+        duration: 1.2
       }
     }
   }

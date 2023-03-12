@@ -25,7 +25,7 @@ export function SecondQuestion ({ age, expectation, onExpectationChange }: Secon
     }
   };
 
-  function expectationChange ({ target }: ChangeEvent<HTMLInputElement>) {
+  function handleExpectationChange ({ target }: ChangeEvent<HTMLInputElement>) {
     let expectationInput = target.value.replace(/[^0-9]/g, '')
     const maxLength = 3
 
@@ -56,7 +56,7 @@ export function SecondQuestion ({ age, expectation, onExpectationChange }: Secon
             ref={inputRef}
             type='text'
             value={expectation}
-            onChange={expectationChange}
+            onChange={handleExpectationChange}
             onKeyDown={handleKeypress}/>
           <Button action={() => handlePageChange(3)} disabled={Number(expectation) <= Number(age)} />
         </Container>

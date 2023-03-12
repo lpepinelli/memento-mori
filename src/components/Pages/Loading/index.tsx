@@ -1,12 +1,22 @@
 import { useContext, useEffect } from 'react'
 import { pagesContext } from '../../../context/pagesContext'
 
-export default function Loading () {
+interface LoadingProps {
+  expectation: number
+}
+
+export default function Loading ({ expectation }: LoadingProps) {
   const { handlePageChange } = useContext(pagesContext)
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      handlePageChange(4)
+      if (expectation < 85) {
+        handlePageChange(4)
+      } else if (expectation > 122) {
+        handlePageChange(5)
+      } else {
+        handlePageChange(6)
+      }
     }, 5000)
 
     return () => {

@@ -6,6 +6,8 @@ import { Home } from './Home'
 import { AnimatePresence } from 'framer-motion'
 import Loading from './Loading'
 import Result from './Result'
+import ErrorPhrase from './ErrorPhrase'
+import WarningPhrase from './WarningPhrase'
 
 export default function Pages () {
   const [age, setAge] = useState('')
@@ -24,8 +26,10 @@ export default function Pages () {
     <Home key={1} />,
     <FirstQuestion key={2} age={age} onAgeChange={handleAgeChange} />,
     <SecondQuestion key={3} age={age} expectation={expectation} onExpectationChange={handleExpectationChange} />,
-    <Loading key={4} />,
-    <Result key={5} age={Number(age)} expectation={Number(expectation)}/>
+    <Loading key={4} expectation={Number(expectation)} />,
+    <ErrorPhrase key={5} />,
+    <WarningPhrase key={6} />,
+    <Result key={7} age={Number(age)} expectation={Number(expectation)} />
   ]
 
   return (

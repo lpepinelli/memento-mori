@@ -4,6 +4,7 @@ export const light: DefaultTheme = {
   colors: {
     background: '#EDB97E',
     fontColor: '#ECECEC',
+    title: '#C1410C',
     primary: {
       light: '#F29343',
       main: '#E7580D',
