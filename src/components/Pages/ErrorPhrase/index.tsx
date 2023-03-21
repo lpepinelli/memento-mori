@@ -43,7 +43,7 @@ export default function ErrorPhrase () {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.7, ease: 'easeInOut' }}>
-          {"I don't know why you inputs such a small age, but i'm sorry, ai can't be able to calculate age below 85 years."}
+          {"I don't know why you input such a small age, but i'm sorry, I'm not able to calculate an age below 85 years."}
       </Title>,
       null
   ]

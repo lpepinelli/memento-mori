@@ -92,7 +92,7 @@ export default function Result ({ age, expectation }: ResultProps) {
         },
         {
           icon: <MdOutlineAttachMoney />,
-          description: `If you save and invest $500 every month you will reach 1M by the age of ${yearsToReach1M(age)} years`
+          description: `If you save and invest $500 every month, you will reach a savings of 1M by the age of ${yearsToReach1M(age)} years`
         }
       ])
     }, 6500)

@@ -12,7 +12,7 @@ export function padTo2Digits (num: number) {
 export function knownCountries (years: number) {
   const countries = years * 2
   if (countries >= 194) {
-    return 'If you visit 2 countries a year, you will have known every country in the world.'
+    return 'If you visit 2 countries a year, you will have seen every known country in the world.'
   } else {
     return `If you visit 2 countries a year, you will have known ${countries} countries.`
   }

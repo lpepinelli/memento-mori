@@ -39,7 +39,7 @@ export default function WarningPhrase () {
       animate={{ opacity: 1, transition: { delay: 1 } }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.7, ease: 'easeInOut' }}>
-        Did you know that the human who lived the longest lived for 122 years?
+        Did you know that the oldest human only lived for 122 years?
       </Title>,
       <Title
         key={2}
@@ -47,7 +47,7 @@ export default function WarningPhrase () {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.7, ease: 'easeInOut' }}>
-          Are you putting your hopes on technology? or do you do a lot of yoga?
+          Are you putting your hopes on technology or do you do a lot of yoga?
       </Title>,
       <Title
         key={3}
