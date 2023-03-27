@@ -5,11 +5,14 @@ import { Button } from '../../Button'
 import { Card } from '../../Card'
 import { pagesContext } from '../../../context/pagesContext'
 import { Wrapper } from '../../Wrapper'
+import { Translator } from '../../i18n'
+// import Switcher from '../../i18n/Switcher'
 
 export function Home () {
   const { handlePageChange } = useContext(pagesContext)
   return (
     <Wrapper align='center'>
+      {/* <Switcher /> */}
       <Card
         height={800}
         width={700}
@@ -25,7 +28,7 @@ export function Home () {
           <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer">
             <FaQuoteRight size={12} />
           </a>
-          <p><strong>Memento Mori</strong> — (Latin: remember you will die) – is the ancient practice of reflection on our mortality that goes back to Socrates, who said that the proper practice of philosophy is “about nothing else but dying and being dead.”</p>
+          <p><strong>Memento Mori</strong> — {Translator({ path: 'home.firstParagraph' })}</p>
         </DarkContainer>
         <p>The purpose of this app is to remind you how much time you have left and how you could use it. For some people, this information may be sad to know, but the intention is just the opposite.</p>
         <DarkContainer>
