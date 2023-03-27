@@ -72,11 +72,12 @@ export default function Result ({ age, expectation }: ResultProps) {
   ]
 
   useEffect(() => {
-    const timeouSuggestAnimationId = setTimeout(() => {
+    const timeoutSuggestAnimationId = setTimeout(() => {
       setStartAnimation(true)
     }, 6000)
-    const timeouSuggestArrayId = setTimeout(() => {
-      setSuggestions([
+    const timeoutSuggestArrayId = setTimeout(() => {
+      const { payment, yearsToReach } = yearsToReach1M(age, expectation)
+      const suggestionsArray = [
         {
           icon: <GoBook />,
           description: `If you read 1 book every 2 months, you will have read ${months / 2} books.`
@@ -89,16 +90,23 @@ export default function Result ({ age, expectation }: ResultProps) {
           icon: <BsTranslate />,
           description: `If you use 1 hour a day for learning a new language, you will have learned ${Math.ceil((1 * days) / 8000)} languages.`,
           explanation: 'Considering it takes 8,000 hours to learn a language'
-        },
-        {
-          icon: <MdOutlineAttachMoney />,
-          description: `If you save and invest $500 every month, you will reach a savings of 1M by the age of ${yearsToReach1M(age)} years`
         }
-      ])
+      ]
+
+      if (payment > 0) {
+        suggestionsArray.push(
+          {
+            icon: <MdOutlineAttachMoney />,
+            description: `If you save and invest $${payment.toLocaleString('pt-BR')} every month, you will become a millionaire by the age of ${yearsToReach + age} years`,
+            explanation: 'Approximate values based on compound interest formula with an annual rate of 8%'
+          }
+        )
+      }
+      setSuggestions(suggestionsArray)
     }, 6500)
     return () => {
-      clearTimeout(timeouSuggestAnimationId)
-      clearTimeout(timeouSuggestArrayId)
+      clearTimeout(timeoutSuggestAnimationId)
+      clearTimeout(timeoutSuggestArrayId)
     }
   }, [])
 
