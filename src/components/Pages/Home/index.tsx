@@ -6,13 +6,13 @@ import { Card } from '../../Card'
 import { pagesContext } from '../../../context/pagesContext'
 import { Wrapper } from '../../Wrapper'
 import { Translator } from '../../i18n'
-// import Switcher from '../../i18n/Switcher'
+import Switcher from '../../i18n/Switcher'
 
 export function Home () {
   const { handlePageChange } = useContext(pagesContext)
   return (
     <Wrapper align='center'>
-      {/* <Switcher /> */}
+      <Switcher />
       <Card
         height={800}
         width={700}

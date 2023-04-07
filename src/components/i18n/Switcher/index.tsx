@@ -1,9 +1,13 @@
 import { useTranslation } from 'react-i18next'
 
-import UsaFlag from '../../../assets/images/usa.svg'
-import BrFlag from '../../../assets/images/brazil.svg'
+import { FlagsContainer, SwitcherContainer } from './styles'
+import Brazil from './Brazil'
+import Usa from './Usa'
+import { MdOutlineTranslate } from 'react-icons/md'
+import { useTheme } from 'styled-components'
 
-const I18n = () => {
+const Switcher = () => {
+  const theme = useTheme()
   const { i18n } = useTranslation()
 
   function handleChangeLanguage (language: string) {
@@ -12,17 +16,22 @@ const I18n = () => {
 
   // const selectedLanguage = i18n.language
   return (
-    <div>
-      <img
-        src={UsaFlag}
-        onClick={() => handleChangeLanguage('en-Us')}
-      />
-      <img
-        src={BrFlag}
-        onClick={() => handleChangeLanguage('pt-BR')}
-      />
-    </div>
+    <SwitcherContainer>
+      <MdOutlineTranslate color={theme.colors.title} style={{ marginLeft: 5 }} />
+
+      <FlagsContainer
+        initial={{ y: -20 }}
+        animate={{ y: 0 }}
+        >
+        <button onClick={() => handleChangeLanguage('en-Us')}>
+          <Usa />
+        </button>
+        <button onClick={() => handleChangeLanguage('pt-BR')}>
+          <Brazil />
+        </button>
+      </FlagsContainer>
+    </SwitcherContainer>
   )
 }
 
-export default I18n
+export default Switcher
