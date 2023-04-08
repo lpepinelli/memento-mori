@@ -5,29 +5,26 @@ export const SwitcherContainer = styled.div`
   position: absolute;
   left: 10px;
   top: 10px;
-  background-color: palegoldenrod;
 
   svg {
-    background-color: paleturquoise;
-  }
-
-  &:hover {
-    div button {
-      display: flex;
-      opacity: 1;
-    }
+    transition: color 0.5s ease-in;
   }
 `
+
+export const SwitcherButton = styled(motion.button)`
+  border: none;
+  background: transparent;
+`
+
 export const FlagsContainer = styled(motion.div)`
+  margin-top: 2px;
   display: flex;
   flex-direction: column;
 
   button {
-    display: none;
-    opacity: 0;
+    display: flex;
     border: none;
     background: transparent;
-    transition: display opacity 2.2s ease-in;
     svg {
       width: 28px;
       height: 28px;

@@ -12,7 +12,6 @@ export function Home () {
   const { handlePageChange } = useContext(pagesContext)
   return (
     <Wrapper align='center'>
-      <Switcher />
       <Card
         height={800}
         width={700}
@@ -24,6 +23,7 @@ export function Home () {
         transition={{ duration: 0.7, ease: 'easeInOut' }}
         shadowDirection='lowerLeftCorner'
       >
+        <Switcher />
         <DarkContainer>
           <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer">
             <FaQuoteRight size={12} />
