@@ -18,6 +18,12 @@ MVP
 - [x] Tratar os casos extremos de age and expectation com frases
 - [-] Devo deixar a expectativa travada em 100 ?
 - [-] Travar as opções de expectation
-- [ ] Botão Pt-Br / En-Us
+- [x] Botão Pt-Br / En-Us
 - [ ] Função de compartilhar nas redes sociais
+  - [ ] Twitter
+  - [ ] Discord
+  - [ ] Facebook
+  - [ ] Whatsapp
+  - [ ] Linkedin
 - [ ] Botão novo calculo
+- [ ] Deploy
