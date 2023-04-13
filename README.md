@@ -1,6 +1,7 @@
 # memento-mori
 MVP
 
+# 🚧 WORK IN PROGRESS
 
 ## Issues
 
