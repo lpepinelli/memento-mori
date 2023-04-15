@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { usePagesContext } from '../../../context/usePagesContext'
 import { Wrapper } from '../../Wrapper'
 import { Title } from './styles'
+import { Translator } from '../../i18n'
 
 export default function ErrorPhrase () {
   const { handlePageChange } = usePagesContext()
@@ -35,7 +36,7 @@ export default function ErrorPhrase () {
       animate={{ opacity: 1, transition: { delay: 1 } }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.7, ease: 'easeInOut' }}>
-        are you ok ?
+        {Translator({ path: 'error.first' })}
       </Title>,
       <Title
         key={2}
@@ -43,7 +44,7 @@ export default function ErrorPhrase () {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.7, ease: 'easeInOut' }}>
-          {"I don't know why you input such a small age, but i'm sorry, I'm not able to calculate an age below 85 years."}
+          {Translator({ path: 'error.second' })}
       </Title>,
       null
   ]

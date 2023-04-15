@@ -4,6 +4,7 @@ import { Button } from '../../Button'
 import { Card } from '../../Card'
 import { Wrapper } from '../../Wrapper'
 import { Container } from './styles'
+import { Translator } from '../../i18n'
 
 interface FirstQuestionProps {
   age?: string,
@@ -50,7 +51,7 @@ export function FirstQuestion ({ age, onAgeChange }: FirstQuestionProps) {
         shadowDirection='lowerRightCorner'
       >
         <Container>
-          <h1>How old are you ?</h1>
+          <h1>{Translator({ path: 'firstQuestion' })}</h1>
           <input
             ref={inputRef}
             type='text'

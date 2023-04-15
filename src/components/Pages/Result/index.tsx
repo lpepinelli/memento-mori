@@ -10,6 +10,7 @@ import { AnimatePresence } from 'framer-motion'
 import { Tooltip } from 'react-tooltip'
 import { FaRegQuestionCircle } from 'react-icons/fa'
 import { knownCountries, yearsToReach1M, diferenceBetweenDates, padTo2Digits } from '../../../utils/suggestionsHelper'
+import { useTranslation } from 'react-i18next'
 
 interface ResultProps {
   age: number,
@@ -36,6 +37,7 @@ export default function Result ({ age, expectation }: ResultProps) {
   const [startAnimation, setStartAnimation] = useState(false)
   // const [title, setTitle] = useState('You have:')
   // const [seconds, setSeconds] = useState(hours * 60 * 60)
+  const { i18n } = useTranslation()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -46,28 +48,28 @@ export default function Result ({ age, expectation }: ResultProps) {
 
   const results = [
     {
-      label: 'Hours',
-      value: `${hours.toLocaleString('pt-BR')}-${padTo2Digits(minutes % 60)}-${padTo2Digits(seconds % 60)}`
+      label: i18n.language === 'en-Us' ? 'Hours' : 'Horas',
+      value: `${hours.toLocaleString(i18n.language)}-${padTo2Digits(minutes % 60)}-${padTo2Digits(seconds % 60)}`
     },
     {
-      label: 'Days',
-      value: days.toLocaleString('pt-BR') // 'en-US'
+      label: i18n.language === 'en-Us' ? 'Days' : 'Dias',
+      value: days.toLocaleString(i18n.language)
     },
     {
-      label: 'Weeks',
-      value: weeks.toLocaleString('pt-BR') // 'en-US'
+      label: i18n.language === 'en-Us' ? 'Weeks' : 'Semanas',
+      value: weeks.toLocaleString(i18n.language)
     },
     {
-      label: 'Months',
-      value: months.toLocaleString('pt-BR') // 'en-US'
+      label: i18n.language === 'en-Us' ? 'Months' : 'Meses',
+      value: months.toLocaleString(i18n.language)
     },
     {
-      label: 'Years',
-      value: years.toLocaleString('pt-BR') // 'en-US'
+      label: i18n.language === 'en-Us' ? 'Years' : 'Anos',
+      value: years.toLocaleString(i18n.language)
     },
     {
-      label: 'Decades',
-      value: decades.toLocaleString('pt-BR') // 'en-US'
+      label: i18n.language === 'en-Us' ? 'Decades' : 'Décadas',
+      value: decades.toLocaleString(i18n.language)
     }
   ]
 
@@ -80,16 +82,16 @@ export default function Result ({ age, expectation }: ResultProps) {
       const suggestionsArray = [
         {
           icon: <GoBook />,
-          description: `If you read 1 book every 2 months, you will have read ${months / 2} books.`
+          description: i18n.language === 'en-Us' ? `If you read 1 book every 2 months, you will have read ${months / 2} books.` : `Se você ler 1 livro a cada 2 meses, terá lido ${months / 2} livros.`
         },
         {
           icon: <TiPlaneOutline />,
-          description: knownCountries(years)
+          description: knownCountries(years, i18n.language)
         },
         {
           icon: <BsTranslate />,
-          description: `If you use 1 hour a day for learning a new language, you will have learned ${Math.ceil((1 * days) / 8000)} languages.`,
-          explanation: 'Considering it takes 8,000 hours to learn a language'
+          description: i18n.language === 'en-Us' ? `If you use 1 hour a day for learning a new language, you will have learned ${Math.ceil((1 * days) / 8000)} languages.` : `Se você usar 1 hora por dia para aprender um novo idioma, terá aprendido ${Math.ceil((1 * days) / 8000)} idiomas.`,
+          explanation: i18n.language === 'en-Us' ? 'Considering it takes 8,000 hours to learn a language' : 'Considerando que leva 8.000 horas para aprender um idioma'
         }
       ]
 
@@ -97,8 +99,8 @@ export default function Result ({ age, expectation }: ResultProps) {
         suggestionsArray.push(
           {
             icon: <MdOutlineAttachMoney />,
-            description: `If you save and invest $${payment.toLocaleString('pt-BR')} every month, you will become a millionaire by the age of ${yearsToReach + age} years`,
-            explanation: 'Approximate values based on compound interest formula with an annual rate of 8%'
+            description: i18n.language === 'en-Us' ? `If you save and invest $${payment.toLocaleString('pt-BR')} every month, you will become a millionaire by the age of ${yearsToReach + age} years.` : `Se você economizar e investir R$ ${payment.toLocaleString(i18n.language)} todos os meses, ficará milionário aos ${yearsToReach + age} anos.`,
+            explanation: i18n.language === 'en-Us' ? 'Approximate values based on compound interest formula with an annual rate of 8%' : 'Valores aproximados com base na fórmula de juros compostos com taxa anual de 8%'
           }
         )
       }
@@ -133,7 +135,7 @@ export default function Result ({ age, expectation }: ResultProps) {
               animate={{ opacity: 1, transition: { delay: 1 } }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7, ease: 'easeInOut' }}>
-                You have:
+                { i18n.language === 'en-Us' ? 'You have:' : 'Você tem:'}
             </Title>
           : <Title
               key="secondTitle"
@@ -141,7 +143,7 @@ export default function Result ({ age, expectation }: ResultProps) {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, ease: 'easeInOut' }}
               exit={{ opacity: 0 }}>
-              With this time you can:
+              { i18n.language === 'en-Us' ? 'With this time you can:' : 'Com esse tempo você pode:'}
             </Title>
             }
         </AnimatePresence>
@@ -153,7 +155,7 @@ export default function Result ({ age, expectation }: ResultProps) {
             {results.map(({ label, value }, i) => (
               <ResultWrapper key={label} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: (0.7 * i) + 1.5, duration: 0.7 } }}>
                 <ContainerValue width={350} mdWidth={225} height={70} mdHeight={50}>
-                  {label === 'Hours'
+                  {label === 'Hours' || label === 'Horas'
                     ? (
                         <h2>{value.split('-')[0]}
                           <span>:{value.split('-')[1]}</span>

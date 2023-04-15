@@ -30,14 +30,14 @@ export function Home () {
           </a>
           <p><strong>Memento Mori</strong> — {Translator({ path: 'home.firstParagraph' })}</p>
         </DarkContainer>
-        <p>The purpose of this app is to remind you how much time you have left and how you could use it. For some people, this information may be sad to know, but the intention is just the opposite.</p>
+        <p>{Translator({ path: 'home.secondParagraph' })}</p>
         <DarkContainer>
           <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer">
             <FaQuoteRight size={12} />
           </a>
-          <p>Meditating on your mortality is only depressing if you miss the point. It is in fact a tool to create priority and meaning. It’s a tool that generations have used to create real perspective and urgency. To treat our time as a gift and not waste it on the trivial and vain. Death doesn’t make life pointless but rather purposeful. And fortunately, we don’t have to nearly die to tap into this. A simple reminder can bring us closer to living the life we want.</p>
+          <p>{Translator({ path: 'home.thirdParagraph' })}</p>
         </DarkContainer>
-        <p>If you want to continue, click the button below. The clock is ticking...</p>
+        <p>{Translator({ path: 'home.warning' })}</p>
         <Button action={() => handlePageChange(1)} />
       </Card>
     </Wrapper>

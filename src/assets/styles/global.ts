@@ -11,6 +11,7 @@ export default createGlobalStyle`
 
   h1 {
     font-weight: 100;
+    text-align: center;
   }
 
   input {
@@ -29,7 +30,7 @@ export default createGlobalStyle`
     background: ${({ theme }) => theme.colors.background};
     font-size: 20px;
     @media (max-height: 768px) {
-      font-size: 18px;
+      font-size: 17.8px;
     }
     color: ${({ theme }) => theme.colors.fontColor};
   }

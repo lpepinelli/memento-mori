@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FlagsContainer, SwitcherContainer, SwitcherButton } from './styles'
 import { MdOutlineTranslate } from 'react-icons/md'
@@ -15,10 +15,6 @@ export default function Switcher () {
   function handleChangeLanguage (language: string) {
     i18n.changeLanguage(language)
   }
-
-  useEffect(() => {
-    console.log(isOpen)
-  }, [isOpen])
 
   // const selectedLanguage = i18n.language
   return (

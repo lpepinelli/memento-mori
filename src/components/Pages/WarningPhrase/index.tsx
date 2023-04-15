@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { usePagesContext } from '../../../context/usePagesContext'
 import { Wrapper } from '../../Wrapper'
 import { Title } from './styles'
+import { Translator } from '../../i18n'
 
 export default function WarningPhrase () {
   const { handlePageChange } = usePagesContext()
@@ -39,7 +40,7 @@ export default function WarningPhrase () {
       animate={{ opacity: 1, transition: { delay: 1 } }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.7, ease: 'easeInOut' }}>
-        Did you know that the oldest human only lived for 122 years?
+        {Translator({ path: 'warnings.first' })}
       </Title>,
       <Title
         key={2}
@@ -47,7 +48,7 @@ export default function WarningPhrase () {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.7, ease: 'easeInOut' }}>
-          Are you putting your hopes on technology or do you do a lot of yoga?
+          {Translator({ path: 'warnings.second' })}
       </Title>,
       <Title
         key={3}
@@ -55,7 +56,7 @@ export default function WarningPhrase () {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.7, ease: 'easeInOut' }}>
-          {"Alright then, here's your calculation"}
+          {Translator({ path: 'warnings.third' })}
       </Title>,
       null
   ]

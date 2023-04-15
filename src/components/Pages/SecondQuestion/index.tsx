@@ -4,6 +4,7 @@ import { Button } from '../../Button'
 import { Card } from '../../Card'
 import { Wrapper } from '../../Wrapper'
 import { Container } from './styles'
+import { Translator } from '../../i18n'
 
 interface SecondQuestionProps {
   age: string,
@@ -38,9 +39,9 @@ export function SecondQuestion ({ age, expectation, onExpectationChange }: Secon
   return (
     <Wrapper align='flex-start'>
       <Card
-        height={300}
+        height={330}
         width={700}
-        mdHeight={300}
+        mdHeight={320}
         mdWidth={650}
         marginTop={200}
         mdMarginTop={100}
@@ -51,7 +52,7 @@ export function SecondQuestion ({ age, expectation, onExpectationChange }: Secon
         shadowDirection='upperRightCorner'
       >
         <Container>
-          <h1>How long would you like to live ?</h1>
+          <h1>{Translator({ path: 'secondQuestion' })}</h1>
           <input
             ref={inputRef}
             type='text'
