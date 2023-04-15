@@ -11,6 +11,7 @@ import { Tooltip } from 'react-tooltip'
 import { FaRegQuestionCircle } from 'react-icons/fa'
 import { knownCountries, yearsToReach1M, diferenceBetweenDates, padTo2Digits } from '../../../utils/suggestionsHelper'
 import { useTranslation } from 'react-i18next'
+import ShareButton from '../../ShareButton'
 
 interface ResultProps {
   age: number,
@@ -188,6 +189,7 @@ export default function Result ({ age, expectation }: ResultProps) {
           </ResultContainer>
         </Container>
       </Card>
+      <ShareButton />
     </Wrapper>
   )
 }

@@ -31,4 +31,4 @@ Link: https://memento-mori-lpepinelli.vercel.app/
   - [ ] Whatsapp
   - [ ] Linkedin
 - [ ] Botão novo calculo
-- [ ] Deploy
+- [x] Deploy
