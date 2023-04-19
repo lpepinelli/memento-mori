@@ -8,6 +8,6 @@ interface ButtonProps {
 
 export function Button ({ action, disabled }: ButtonProps) {
   return (
-    <StyledButton onClick={action} disabled={disabled || false}><BsArrowRight /></StyledButton>
+    <StyledButton name="Next" onClick={action} disabled={disabled || false}><BsArrowRight /></StyledButton>
   )
 }

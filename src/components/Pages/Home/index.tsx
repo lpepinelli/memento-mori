@@ -25,14 +25,14 @@ export function Home () {
       >
         <Switcher />
         <DarkContainer>
-          <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer">
+          <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer" aria-label="bibliographic reference">
             <FaQuoteRight size={12} />
           </a>
           <p><strong>Memento Mori</strong> — {Translator({ path: 'home.firstParagraph' })}</p>
         </DarkContainer>
         <p>{Translator({ path: 'home.secondParagraph' })}</p>
         <DarkContainer>
-          <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer">
+          <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer" aria-label="bibliographic reference">
             <FaQuoteRight size={12} />
           </a>
           <p>{Translator({ path: 'home.thirdParagraph' })}</p>

@@ -10,6 +10,7 @@ type LanguageButtonProps = {
 export default function LanguageButton ({ action, type }: LanguageButtonProps) {
   return (
     <motion.button
+      name="Language Switcher"
       className='languageTooltip'
       onClick={action}
       whileHover={{ scale: 1.08 }}
