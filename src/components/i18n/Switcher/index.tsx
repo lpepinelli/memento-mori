@@ -20,6 +20,7 @@ export default function Switcher () {
   return (
     <SwitcherContainer>
       <SwitcherButton
+        aria-label="Language Switcher"
         onClick={() => setIsOpen(prev => !prev)}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 1.15 }}>

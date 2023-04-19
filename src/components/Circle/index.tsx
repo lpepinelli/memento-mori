@@ -94,7 +94,7 @@ export function Circle ({ onToggleTheme }: CircleProps) {
   return (
     <>
       <CircleContainer
-        name="Sun Theme Switcher"
+        aria-label="Sun Theme Switcher"
         whileHover={loading ? {} : { scale: 1.08 }}
         onClick={onToggleTheme}
         variants={variants}
