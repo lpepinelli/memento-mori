@@ -48,27 +48,27 @@ export default function Result ({ age, expectation }: ResultProps) {
 
   const results = [
     {
-      label: i18n.language === 'en-Us' ? 'Hours' : 'Horas',
+      label: i18n.language === 'en-US' ? 'Hours' : 'Horas',
       value: `${hours.toLocaleString(i18n.language)}-${padTo2Digits(minutes % 60)}-${padTo2Digits(seconds % 60)}`
     },
     {
-      label: i18n.language === 'en-Us' ? 'Days' : 'Dias',
+      label: i18n.language === 'en-US' ? 'Days' : 'Dias',
       value: days.toLocaleString(i18n.language)
     },
     {
-      label: i18n.language === 'en-Us' ? 'Weeks' : 'Semanas',
+      label: i18n.language === 'en-US' ? 'Weeks' : 'Semanas',
       value: weeks.toLocaleString(i18n.language)
     },
     {
-      label: i18n.language === 'en-Us' ? 'Months' : 'Meses',
+      label: i18n.language === 'en-US' ? 'Months' : 'Meses',
       value: months.toLocaleString(i18n.language)
     },
     {
-      label: i18n.language === 'en-Us' ? 'Years' : 'Anos',
+      label: i18n.language === 'en-US' ? 'Years' : 'Anos',
       value: years.toLocaleString(i18n.language)
     },
     {
-      label: i18n.language === 'en-Us' ? 'Decades' : 'Décadas',
+      label: i18n.language === 'en-US' ? 'Decades' : 'Décadas',
       value: decades.toLocaleString(i18n.language)
     }
   ]
@@ -82,7 +82,7 @@ export default function Result ({ age, expectation }: ResultProps) {
       const suggestionsArray = [
         {
           icon: <GoBook />,
-          description: i18n.language === 'en-Us' ? `If you read 1 book every 2 months, you will have read ${months / 2} books.` : `Se você ler 1 livro a cada 2 meses, terá lido ${months / 2} livros.`
+          description: i18n.language === 'en-US' ? `If you read 1 book every 2 months, you will have read ${months / 2} books.` : `Se você ler 1 livro a cada 2 meses, terá lido ${months / 2} livros.`
         },
         {
           icon: <TiPlaneOutline />,
@@ -90,8 +90,8 @@ export default function Result ({ age, expectation }: ResultProps) {
         },
         {
           icon: <BsTranslate />,
-          description: i18n.language === 'en-Us' ? `If you use 1 hour a day for learning a new language, you will have learned ${Math.ceil((1 * days) / 8000)} languages.` : `Se você usar 1 hora por dia para aprender um novo idioma, terá aprendido ${Math.ceil((1 * days) / 8000)} idiomas.`,
-          explanation: i18n.language === 'en-Us' ? 'Considering it takes 8,000 hours to learn a language' : 'Considerando que leva 8.000 horas para aprender um idioma'
+          description: i18n.language === 'en-US' ? `If you use 1 hour a day for learning a new language, you will have learned ${Math.ceil((1 * days) / 8000)} languages.` : `Se você usar 1 hora por dia para aprender um novo idioma, terá aprendido ${Math.ceil((1 * days) / 8000)} idiomas.`,
+          explanation: i18n.language === 'en-US' ? 'Considering it takes 8,000 hours to learn a language' : 'Considerando que leva 8.000 horas para aprender um idioma'
         }
       ]
 
@@ -99,8 +99,8 @@ export default function Result ({ age, expectation }: ResultProps) {
         suggestionsArray.push(
           {
             icon: <MdOutlineAttachMoney />,
-            description: i18n.language === 'en-Us' ? `If you save and invest $${payment.toLocaleString('pt-BR')} every month, you will become a millionaire by the age of ${yearsToReach + age} years.` : `Se você economizar e investir R$ ${payment.toLocaleString(i18n.language)} todos os meses, ficará milionário aos ${yearsToReach + age} anos.`,
-            explanation: i18n.language === 'en-Us' ? 'Approximate values based on compound interest formula with an annual rate of 8%' : 'Valores aproximados com base na fórmula de juros compostos com taxa anual de 8%'
+            description: i18n.language === 'en-US' ? `If you save and invest $${payment.toLocaleString('pt-BR')} every month, you will become a millionaire by the age of ${yearsToReach + age} years.` : `Se você economizar e investir R$ ${payment.toLocaleString(i18n.language)} todos os meses, ficará milionário aos ${yearsToReach + age} anos.`,
+            explanation: i18n.language === 'en-US' ? 'Approximate values based on compound interest formula with an annual rate of 8%' : 'Valores aproximados com base na fórmula de juros compostos com taxa anual de 8%'
           }
         )
       }
@@ -135,7 +135,7 @@ export default function Result ({ age, expectation }: ResultProps) {
               animate={{ opacity: 1, transition: { delay: 1 } }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7, ease: 'easeInOut' }}>
-                { i18n.language === 'en-Us' ? 'You have:' : 'Você tem:'}
+                { i18n.language === 'en-US' ? 'You have:' : 'Você tem:'}
             </Title>
           : <Title
               key="secondTitle"
@@ -143,7 +143,7 @@ export default function Result ({ age, expectation }: ResultProps) {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, ease: 'easeInOut' }}
               exit={{ opacity: 0 }}>
-              { i18n.language === 'en-Us' ? 'With this time you can:' : 'Com esse tempo você pode:'}
+              { i18n.language === 'en-US' ? 'With this time you can:' : 'Com esse tempo você pode:'}
             </Title>
             }
         </AnimatePresence>
