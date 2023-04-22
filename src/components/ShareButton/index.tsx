@@ -1,17 +1,18 @@
 import html2canvas from 'html2canvas'
 
 export default function ShareButton () {
-  console.log(import.meta.env.TWITTER_API_KEY)
-
   function tweetScreenshot (screenshot: string) {
     const tweetText = 'Check out this screenshot of my React app!'
     const url = 'https://upload.twitter.com/1.1/media/upload.json'
     const tweetUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetText)
 
+    console.log(import.meta.env.TWITTER_API_KEY)
+    console.log(import.meta.env.VITE_TWITTER_BEARER_TOKEN)
+
     fetch(url, {
       method: 'POST',
       headers: {
-        Authorization: 'Bearer ' + import.meta.env.VITE_TWITTER_API_KEY,
+        Authorization: 'Bearer ' + import.meta.env.VITE_TWITTER_BEARER_TOKEN,
         'Content-Type': 'application/octet-stream'
       },
       body: dataURItoBlob(screenshot)
