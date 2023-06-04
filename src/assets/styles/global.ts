@@ -12,7 +12,13 @@ export default createGlobalStyle`
   h1 {
     font-weight: 100;
     text-align: center;
+
+    @media (max-width: 412px) {
+      font-size: 35px;
+    }
   }
+
+
 
   input {
     background: transparent;

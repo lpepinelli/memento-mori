@@ -3,8 +3,10 @@ import { motion } from 'framer-motion'
 interface ContainerValueProps {
   readonly height: number;
   readonly mdHeight: number;
+  readonly smHeight: number;
   readonly width: number;
   readonly mdWidth: number;
+  readonly smWidth: number;
   readonly bgColor?: 'light' | 'dark';
 }
 
@@ -18,7 +20,13 @@ export const Title = styled(motion.h1)`
   margin-bottom: 32px;
 
   @media (max-height: 768px) {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 412px) {
+    margin-bottom: 0px;
+    height: 108px;
+    font-size: 32px;
   }
 `
 export const Container = styled(motion.div)<ContainerProps>`
@@ -26,6 +34,11 @@ export const Container = styled(motion.div)<ContainerProps>`
   justify-content: ${({ justifyContent }) => justifyContent || 'center'};
   gap: 10px;
   /* background-color: aliceblue; */
+
+  @media(max-width: 412px) {
+    overflow-y: auto;
+    flex-direction: column;
+  }
 `
 
 export const ResultContainer = styled(motion.div)`
@@ -88,5 +101,24 @@ export const ContainerValue = styled(motion.div)<ContainerValueProps>`
   @media (max-height: 768px) {
     width: ${({ mdWidth }) => mdWidth}px;
     height: ${({ mdHeight }) => mdHeight}px;
+  }
+
+  @media (max-width: 412px) {
+    h2 {
+      font-size: 22px;
+      span {
+        font-size: 18px;
+      }
+      small {
+        font-size: 16px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    width: ${({ smWidth }) => smWidth}px;
+    height: ${({ smHeight }) => smHeight}px;
   }
 `

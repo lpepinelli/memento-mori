@@ -12,7 +12,13 @@ export const CircleContainer = styled(motion.button)`
   top: 10px;
 
   @media (max-height: 768px) {
-    width: 180px;
-    height: 180px;
+    width: 170px;
+    height: 170px;
+  }
+
+  @media (max-width: 500px) {
+    width: 100px;
+    height: 100px;
+  border: 10px solid ${({ theme }) => theme.colors.primary.light};
   }
 `

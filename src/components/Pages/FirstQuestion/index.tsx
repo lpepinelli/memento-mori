@@ -42,6 +42,8 @@ export function FirstQuestion ({ age, onAgeChange }: FirstQuestionProps) {
         width={600}
         mdHeight={300}
         mdWidth={600}
+        smHeight={300}
+        smWidth={360}
         marginTop={200}
         mdMarginTop={100}
         initial={{ opacity: 0 }}
