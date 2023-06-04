@@ -14,9 +14,12 @@ interface FirstQuestionProps {
 export function FirstQuestion ({ age, onAgeChange }: FirstQuestionProps) {
   const { handlePageChange } = useContext(pagesContext)
   const inputRef = useRef<HTMLInputElement>(null)
+  const isMobile = window.innerWidth <= 412
 
   useEffect(() => {
-    inputRef?.current?.focus()
+    if (!isMobile) {
+      inputRef?.current?.focus()
+    }
   }, [])
 
   function handleKeypress (e: KeyboardEvent<HTMLInputElement>) {
