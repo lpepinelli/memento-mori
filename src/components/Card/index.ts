@@ -45,7 +45,7 @@ export const Card = styled(motion.div)<CardProps>`
     margin-top: ${marginTop}px;
   `}
 
-  @media (max-height: 768px) {
+  @media (max-width: 1366px) {
     height: ${({ mdHeight }) => mdHeight}px;
     width: ${({ mdWidth }) => mdWidth}px;
     gap: 8px;

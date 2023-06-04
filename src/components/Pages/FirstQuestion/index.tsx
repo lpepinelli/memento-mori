@@ -49,6 +49,7 @@ export function FirstQuestion ({ age, onAgeChange }: FirstQuestionProps) {
         smWidth={360}
         marginTop={200}
         mdMarginTop={100}
+        smMarginTop={200}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 1 } }}
         exit={{ opacity: 0 }}
