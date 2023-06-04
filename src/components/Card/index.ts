@@ -4,10 +4,13 @@ import styled, { css } from 'styled-components'
 interface CardProps {
   readonly height: number;
   readonly mdHeight: number;
+  readonly smHeight: number;
   readonly width: number;
   readonly mdWidth: number;
+  readonly smWidth: number;
   readonly marginTop?: number;
   readonly mdMarginTop?: number;
+  readonly smMarginTop?: number;
   readonly shadowDirection: 'lowerLeftCorner' | 'lowerRightCorner' | 'upperRightCorner' | 'lowerCentered';
 }
 
@@ -48,6 +51,15 @@ export const Card = styled(motion.div)<CardProps>`
     gap: 8px;
     ${({ mdMarginTop }) => mdMarginTop && css`
       margin-top: ${mdMarginTop}px;
+    `}
+  }
+
+  @media (max-width: 412px) {
+    height: ${({ smHeight }) => smHeight}px;
+    width: ${({ smWidth }) => smWidth}px;
+    gap: 8px;
+    ${({ smMarginTop }) => smMarginTop && css`
+      margin-top: ${smMarginTop}px;
     `}
   }
 `

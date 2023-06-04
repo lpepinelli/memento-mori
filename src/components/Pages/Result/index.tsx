@@ -11,7 +11,6 @@ import { Tooltip } from 'react-tooltip'
 import { FaRegQuestionCircle } from 'react-icons/fa'
 import { knownCountries, yearsToReach1M, diferenceBetweenDates, padTo2Digits } from '../../../utils/suggestionsHelper'
 import { useTranslation } from 'react-i18next'
-import ShareButton from '../../ShareButton'
 
 interface ResultProps {
   age: number,
@@ -39,6 +38,7 @@ export default function Result ({ age, expectation }: ResultProps) {
   // const [title, setTitle] = useState('You have:')
   // const [seconds, setSeconds] = useState(hours * 60 * 60)
   const { i18n } = useTranslation()
+  const isMobile = window.innerWidth <= 412
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -114,14 +114,17 @@ export default function Result ({ age, expectation }: ResultProps) {
   }, [])
 
   return (
-    <Wrapper align='flex-start'>
+    <Wrapper align={isMobile ? 'center' : 'flex-start'}>
       <Card
         height={650}
         width={1150}
         mdHeight={440}
         mdWidth={900}
+        smHeight={700}
+        smWidth={380}
         marginTop={300}
         mdMarginTop={200}
+        smMarginTop={180}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 1 } }}
         exit={{ opacity: 0 }}
@@ -149,13 +152,13 @@ export default function Result ({ age, expectation }: ResultProps) {
             }
         </AnimatePresence>
         <Container
-          style={{ marginLeft: !startAnimation ? undefined : 10 }}
+          style={{ marginLeft: !startAnimation && !isMobile ? undefined : 10 }}
           justifyContent={!startAnimation ? 'center' : 'flex-start'}
           transition={{ type: 'tween', duration: 2 }}>
           <ResultContainer layout transition={{ duration: 1.5 }}>
             {results.map(({ label, value }, i) => (
               <ResultWrapper key={label} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: (0.7 * i) + 1.5, duration: 0.7 } }}>
-                <ContainerValue width={350} mdWidth={225} height={70} mdHeight={50}>
+                <ContainerValue width={350} mdWidth={225} smWidth={175} height={70} mdHeight={50} smHeight={50}>
                   {label === 'Hours' || label === 'Horas'
                     ? (
                         <h2>{value.split('-')[0]}
@@ -169,7 +172,7 @@ export default function Result ({ age, expectation }: ResultProps) {
                   }
 
                 </ContainerValue>
-                <ContainerValue width={200} mdWidth={150} height={70} mdHeight={50} bgColor='dark'><h2>{label}</h2></ContainerValue>
+                <ContainerValue width={200} mdWidth={150} smWidth={125} height={70} mdHeight={50} smHeight={50} bgColor='dark'><h2>{label}</h2></ContainerValue>
               </ResultWrapper>
             ))}
           </ResultContainer>
@@ -181,15 +184,14 @@ export default function Result ({ age, expectation }: ResultProps) {
                     <FaRegQuestionCircle size={12} />
                   </div>
                 )}
-                <ContainerValue width={90} mdWidth={60} height={105} mdHeight={70} ><h1>{icon}</h1></ContainerValue>
-                <ContainerValue width={420} mdWidth={375} height={105} mdHeight={70} bgColor='dark'><p>{description}</p></ContainerValue>
+                <ContainerValue width={90} mdWidth={60} smWidth={65} height={105} mdHeight={70} smHeight={70} ><h1>{icon}</h1></ContainerValue>
+                <ContainerValue width={420} mdWidth={375} smWidth={235} height={105} mdHeight={70} smHeight={70} bgColor='dark'><p>{description}</p></ContainerValue>
               </ResultWrapper>
             ))}
             <Tooltip anchorSelect=".questionTooltip" />
           </ResultContainer>
         </Container>
       </Card>
-      <ShareButton />
     </Wrapper>
   )
 }

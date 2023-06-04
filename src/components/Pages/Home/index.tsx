@@ -17,6 +17,8 @@ export function Home () {
         width={700}
         mdHeight={600}
         mdWidth={600}
+        smHeight={600}
+        smWidth={370}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -24,21 +26,29 @@ export function Home () {
         shadowDirection='lowerLeftCorner'
       >
         <Switcher />
-        <DarkContainer>
-          <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer">
-            <FaQuoteRight size={12} />
-          </a>
-          <p><strong>Memento Mori</strong> — {Translator({ path: 'home.firstParagraph' })}</p>
-        </DarkContainer>
-        <p>{Translator({ path: 'home.secondParagraph' })}</p>
-        <DarkContainer>
-          <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer">
-            <FaQuoteRight size={12} />
-          </a>
-          <p>{Translator({ path: 'home.thirdParagraph' })}</p>
-        </DarkContainer>
-        <p>{Translator({ path: 'home.warning' })}</p>
+        <div style={{
+          overflow: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px'
+        }}>
+          <DarkContainer>
+            <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer">
+              <FaQuoteRight size={12} />
+            </a>
+            <p><strong>Memento Mori</strong> — {Translator({ path: 'home.firstParagraph' })}</p>
+          </DarkContainer>
+          <p>{Translator({ path: 'home.secondParagraph' })}</p>
+          <DarkContainer>
+            <a href='https://dailystoic.com/what-is-memento-mori/' target='_blank' rel="noreferrer">
+              <FaQuoteRight size={12} />
+            </a>
+            <p>{Translator({ path: 'home.thirdParagraph' })}</p>
+          </DarkContainer>
+          <p>{Translator({ path: 'home.warning' })}</p>
+        </div>
         <Button action={() => handlePageChange(1)} />
+
       </Card>
     </Wrapper>
   )

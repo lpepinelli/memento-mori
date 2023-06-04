@@ -43,6 +43,8 @@ export function SecondQuestion ({ age, expectation, onExpectationChange }: Secon
         width={700}
         mdHeight={320}
         mdWidth={650}
+        smHeight={300}
+        smWidth={360}
         marginTop={200}
         mdMarginTop={100}
         initial={{ opacity: 0 }}
