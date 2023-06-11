@@ -17,8 +17,9 @@ export function Home () {
         width={700}
         mdHeight={600}
         mdWidth={600}
-        smHeight={600}
-        smWidth={370}
+        smHeight={500}
+        smWidth={320}
+        smMarginTop={70}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

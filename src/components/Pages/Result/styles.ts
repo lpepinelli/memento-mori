@@ -26,7 +26,7 @@ export const Title = styled(motion.h1)`
   @media (max-width: 412px) {
     margin-bottom: 0px;
     height: 108px;
-    font-size: 32px;
+    font-size: 30px;
   }
 `
 export const Container = styled(motion.div)<ContainerProps>`
@@ -105,12 +105,12 @@ export const ContainerValue = styled(motion.div)<ContainerValueProps>`
 
   @media (max-width: 412px) {
     h2 {
-      font-size: 22px;
+      font-size: 20px;
       span {
-        font-size: 18px;
+        font-size: 16px;
       }
       small {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
 

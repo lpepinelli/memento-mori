@@ -8,4 +8,9 @@ export const Container = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 500px) {
+    /* margin-top: 0px; */
+    gap: 30px;
+  }
 `

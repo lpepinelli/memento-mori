@@ -10,10 +10,10 @@ export function Circle ({ onToggleTheme }: CircleProps) {
   const { currentPage } = useContext(pagesContext)
   const [loading, setLoading] = useState(false)
   const isMobile = window.innerWidth <= 412
-  const upperLeftCorner = isMobile ? -(window.innerWidth - 130) : -(window.innerWidth - 240)
+  const upperLeftCorner = isMobile ? -(window.innerWidth - 90) : -(window.innerWidth - 240)
   const lowerLeftCorner = (window.innerHeight - 230)
   const centerY = (window.innerHeight / 2) - 114
-  const centerX = isMobile ? (window.innerWidth / 2) - 75 : (window.innerWidth / 2) - 114
+  const centerX = isMobile ? (window.innerWidth / 2) - 48 : (window.innerWidth / 2) - 114
 
   useEffect(() => {
     let timeoutId = 0

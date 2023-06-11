@@ -14,7 +14,7 @@ export default createGlobalStyle`
     text-align: center;
 
     @media (max-width: 412px) {
-      font-size: 35px;
+      font-size: 30px;
     }
   }
 

@@ -120,11 +120,11 @@ export default function Result ({ age, expectation }: ResultProps) {
         width={1150}
         mdHeight={440}
         mdWidth={900}
-        smHeight={700}
-        smWidth={380}
+        smHeight={500}
+        smWidth={340}
         marginTop={300}
         mdMarginTop={200}
-        smMarginTop={180}
+        smMarginTop={60}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 1 } }}
         exit={{ opacity: 0 }}
@@ -158,7 +158,7 @@ export default function Result ({ age, expectation }: ResultProps) {
           <ResultContainer layout transition={{ duration: 1.5 }}>
             {results.map(({ label, value }, i) => (
               <ResultWrapper key={label} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: (0.7 * i) + 1.5, duration: 0.7 } }}>
-                <ContainerValue width={350} mdWidth={225} smWidth={175} height={70} mdHeight={50} smHeight={50}>
+                <ContainerValue width={350} mdWidth={225} smWidth={165} height={70} mdHeight={50} smHeight={50}>
                   {label === 'Hours' || label === 'Horas'
                     ? (
                         <h2>{value.split('-')[0]}
@@ -172,7 +172,7 @@ export default function Result ({ age, expectation }: ResultProps) {
                   }
 
                 </ContainerValue>
-                <ContainerValue width={200} mdWidth={150} smWidth={125} height={70} mdHeight={50} smHeight={50} bgColor='dark'><h2>{label}</h2></ContainerValue>
+                <ContainerValue width={200} mdWidth={150} smWidth={120} height={70} mdHeight={50} smHeight={50} bgColor='dark'><h2>{label}</h2></ContainerValue>
               </ResultWrapper>
             ))}
           </ResultContainer>
@@ -185,7 +185,7 @@ export default function Result ({ age, expectation }: ResultProps) {
                   </div>
                 )}
                 <ContainerValue width={90} mdWidth={60} smWidth={65} height={105} mdHeight={70} smHeight={70} ><h1>{icon}</h1></ContainerValue>
-                <ContainerValue width={420} mdWidth={375} smWidth={235} height={105} mdHeight={70} smHeight={70} bgColor='dark'><p>{description}</p></ContainerValue>
+                <ContainerValue width={420} mdWidth={375} smWidth={220} height={105} mdHeight={70} smHeight={70} bgColor='dark'><p>{description}</p></ContainerValue>
               </ResultWrapper>
             ))}
             <Tooltip anchorSelect=".questionTooltip" />
