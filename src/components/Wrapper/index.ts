@@ -14,7 +14,7 @@ export const Wrapper = styled.div<WrapperProps>`
     height: 650px;
   }
 
-  @media (max-width: 412px) {
+  @media (max-width: 612px) {
     height: 630px;
   }
 `

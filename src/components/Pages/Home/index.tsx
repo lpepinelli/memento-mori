@@ -15,7 +15,7 @@ export function Home () {
       <Card
         height={800}
         width={700}
-        mdHeight={600}
+        mdHeight={630}
         mdWidth={600}
         smHeight={500}
         smWidth={320}

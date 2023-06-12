@@ -54,7 +54,7 @@ export const Card = styled(motion.div)<CardProps>`
     `}
   }
 
-  @media (max-width: 412px) {
+  @media (max-width: 612px) {
     padding: 20px;
     height: ${({ smHeight }) => smHeight}px;
     width: ${({ smWidth }) => smWidth}px;

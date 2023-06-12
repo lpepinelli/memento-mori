@@ -38,7 +38,7 @@ export default function Result ({ age, expectation }: ResultProps) {
   // const [title, setTitle] = useState('You have:')
   // const [seconds, setSeconds] = useState(hours * 60 * 60)
   const { i18n } = useTranslation()
-  const isMobile = window.innerWidth <= 412
+  const isMobile = window.innerWidth <= 612
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -23,7 +23,7 @@ export const Title = styled(motion.h1)`
     margin-bottom: 8px;
   }
 
-  @media (max-width: 412px) {
+  @media (max-width: 612px) {
     margin-bottom: 0px;
     height: 108px;
     font-size: 30px;
@@ -103,7 +103,7 @@ export const ContainerValue = styled(motion.div)<ContainerValueProps>`
     height: ${({ mdHeight }) => mdHeight}px;
   }
 
-  @media (max-width: 412px) {
+  @media (max-width: 612px) {
     h2 {
       font-size: 20px;
       span {

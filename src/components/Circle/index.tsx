@@ -9,7 +9,7 @@ interface CircleProps {
 export function Circle ({ onToggleTheme }: CircleProps) {
   const { currentPage } = useContext(pagesContext)
   const [loading, setLoading] = useState(false)
-  const isMobile = window.innerWidth <= 412
+  const isMobile = window.innerWidth <= 612
   const upperLeftCorner = isMobile ? -(window.innerWidth - 90) : -(window.innerWidth - 240)
   const lowerLeftCorner = (window.innerHeight - 230)
   const centerY = (window.innerHeight / 2) - 114

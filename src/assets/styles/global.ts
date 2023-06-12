@@ -13,7 +13,7 @@ export default createGlobalStyle`
     font-weight: 100;
     text-align: center;
 
-    @media (max-width: 412px) {
+    @media (max-width: 612px) {
       font-size: 30px;
     }
   }

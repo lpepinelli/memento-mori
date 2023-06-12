@@ -16,7 +16,7 @@ export const CircleContainer = styled(motion.button)`
     height: 170px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 612px) {
     width: 70px;
     height: 70px;
     border: 7px solid ${({ theme }) => theme.colors.primary.light};
