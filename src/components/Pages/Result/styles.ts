@@ -35,7 +35,7 @@ export const Container = styled(motion.div)<ContainerProps>`
   gap: 10px;
   /* background-color: aliceblue; */
 
-  @media(max-width: 412px) {
+  @media (max-width: 612px) {
     overflow-y: auto;
     flex-direction: column;
   }
