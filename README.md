@@ -24,13 +24,21 @@ Have you ever wondered how many days you have left to live? It's a morbid though
 
 ## ⏯️ How to run
 
-Clone the repository and enter the directory
+Clone the repository and enter the directory.
 
 ```bash
   git clone https://github.com/lpepinelli/memento-mori.git
 ```
 ```bash
   cd memento-mori
+```
+Install dependencies.
+```bash
+  yarn
+```
+Run the project.
+```bash
+  yarn dev
 ```
 
 ## 🚀 Demo
