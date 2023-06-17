@@ -7,9 +7,8 @@
   
 </div>
 
-# 🚧 WORK IN PROGRESS
 
-![overview_memento fw](https://user-images.githubusercontent.com/43144939/231875853-62456741-a52d-4f00-9fac-2167a7f5106a.png)
+![vertical](https://github.com/lpepinelli/memento-mori/assets/43144939/60e7cd28-6d10-44af-8122-20fd5062a687)
 
 Leia isso em Português: <a href="README_BR.md"><img height="16" src="https://raw.githubusercontent.com/lipis/flag-icons/95cbeb22405dad5b86ee76df892c3666e81882d8/flags/4x3/br.svg" alt="US"/></a>
 
