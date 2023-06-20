@@ -100,7 +100,7 @@ export default function Result ({ age, expectation }: ResultProps) {
         suggestionsArray.push(
           {
             icon: <MdOutlineAttachMoney />,
-            description: i18n.language === 'en-US' ? `If you save and invest $${payment.toLocaleString('pt-BR')} every month, you will become a millionaire by the age of ${yearsToReach + age} years.` : `Se você economizar e investir R$ ${payment.toLocaleString(i18n.language)} todos os meses, ficará milionário aos ${yearsToReach + age} anos.`,
+            description: i18n.language === 'en-US' ? `If you save and invest $${payment.toLocaleString('pt-BR')} every month, you will become a millionaire by the age of ${yearsToReach + age}.` : `Se você economizar e investir R$ ${payment.toLocaleString(i18n.language)} todos os meses, ficará milionário aos ${yearsToReach + age} anos.`,
             explanation: i18n.language === 'en-US' ? 'Approximate values based on compound interest formula with an annual rate of 8%' : 'Valores aproximados com base na fórmula de juros compostos com taxa anual de 8%'
           }
         )

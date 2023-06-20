@@ -12,9 +12,9 @@ export function padTo2Digits (num: number) {
 export function knownCountries (years: number, language: string) {
   const countries = years * 2
   if (countries >= 194) {
-    return language === 'en-US' ? 'If you visit 2 countries a year, you will have known every country in the world.' : 'Se você visitar 2 países por ano, terá conhecido todos os países do mundo.'
+    return language === 'en-US' ? 'If you visit 2 countries a year, you will have visited every country in the world.' : 'Se você visitar 2 países por ano, terá conhecido todos os países do mundo.'
   } else {
-    return language === 'en-US' ? `If you visit 2 countries a year, you will have known ${countries} countries.` : `Se você visitar 2 países por ano, terá conhecido ${countries} países.`
+    return language === 'en-US' ? `If you visit 2 countries a year, you will have visited ${countries} countries.` : `Se você visitar 2 países por ano, terá conhecido ${countries} países.`
   }
 }
 
