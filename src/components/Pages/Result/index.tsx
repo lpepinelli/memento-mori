@@ -1,16 +1,16 @@
+import { AnimatePresence } from 'framer-motion'
 import { ReactElement, useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { BsTranslate } from 'react-icons/bs'
+import { FaQuoteLeft, FaQuoteRight, FaRegQuestionCircle } from 'react-icons/fa'
+import { GoBook } from 'react-icons/go'
+import { MdOutlineAttachMoney } from 'react-icons/md'
+import { TiPlaneOutline } from 'react-icons/ti'
+import { Tooltip } from 'react-tooltip'
+import { diferenceBetweenDates, knownCountries, padTo2Digits, yearsToReach1M } from '../../../utils/suggestionsHelper'
 import { Card } from '../../Card'
 import { Wrapper } from '../../Wrapper'
-import { GoBook } from 'react-icons/go'
-import { TiPlaneOutline } from 'react-icons/ti'
-import { BsTranslate } from 'react-icons/bs'
-import { MdOutlineAttachMoney } from 'react-icons/md'
-import { ContainerValue, ResultContainer, Title, ResultWrapper, Container } from './styles'
-import { AnimatePresence } from 'framer-motion'
-import { Tooltip } from 'react-tooltip'
-import { FaRegQuestionCircle } from 'react-icons/fa'
-import { knownCountries, yearsToReach1M, diferenceBetweenDates, padTo2Digits } from '../../../utils/suggestionsHelper'
-import { useTranslation } from 'react-i18next'
+import { Container, ContainerValue, Quote, ResultContainer, ResultWrapper, Title } from './styles'
 
 interface ResultProps {
   age: number,
@@ -114,6 +114,7 @@ export default function Result ({ age, expectation }: ResultProps) {
   }, [])
 
   return (
+    <>
     <Wrapper align={isMobile ? 'center' : 'flex-start'}>
       <Card
         height={650}
@@ -122,7 +123,7 @@ export default function Result ({ age, expectation }: ResultProps) {
         mdWidth={900}
         smHeight={500}
         smWidth={340}
-        marginTop={300}
+        marginTop={250}
         mdMarginTop={200}
         smMarginTop={60}
         initial={{ opacity: 0 }}
@@ -193,5 +194,15 @@ export default function Result ({ age, expectation }: ResultProps) {
         </Container>
       </Card>
     </Wrapper>
+
+    <Quote animate={{ opacity: 1, transition: { delay: 12, duration: 2 } }}>
+      <div>
+      <FaQuoteLeft size={6} />
+      <p>{ i18n.language === 'en-US' ? 'Life is long if you know how to use it' : 'A vida é longa se você souber usá-la'}</p>
+      <FaQuoteRight size={6} />
+      </div>
+      <span>- Seneca</span>
+    </Quote>
+    </>
   )
 }

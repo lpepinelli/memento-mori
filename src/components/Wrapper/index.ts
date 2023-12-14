@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 interface WrapperProps {
   readonly align?: 'center' | 'flex-start' | 'flex-end';
@@ -8,7 +8,7 @@ export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   align-items: ${({ align }) => align || 'center'};
   justify-content: center;
-  height: 950px;
+  height: 920px;
 
   @media (max-height: 768px) {
     height: 650px;

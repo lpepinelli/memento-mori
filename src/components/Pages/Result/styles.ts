@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
 interface ContainerValueProps {
   readonly height: number;
   readonly mdHeight: number;
@@ -120,5 +120,26 @@ export const ContainerValue = styled(motion.div)<ContainerValueProps>`
 
     width: ${({ smWidth }) => smWidth}px;
     height: ${({ smHeight }) => smHeight}px;
+  }
+`
+
+export const Quote = styled(motion.div)`
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  color: ${({ theme }) => theme.colors.title};
+
+  div {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 612px) {
+    flex-direction: column;
+    span {
+      align-self: flex-end;
+      padding: 15px;
+    }
   }
 `
