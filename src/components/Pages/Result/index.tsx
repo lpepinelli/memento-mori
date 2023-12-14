@@ -198,7 +198,7 @@ export default function Result ({ age, expectation }: ResultProps) {
     <Quote animate={{ opacity: 1, transition: { delay: 12, duration: 2 } }}>
       <div>
       <FaQuoteLeft size={6} />
-      <p>{ i18n.language === 'en-US' ? 'Life is long if you know how to use it' : 'A vida é longa se você souber usá-la'}</p>
+      <p>{ i18n.language === 'en-US' ? 'Life is long, if you know how to use it.' : 'A vida é longa, se você souber usá-la.'}</p>
       <FaQuoteRight size={6} />
       </div>
       <span>- Seneca</span>
