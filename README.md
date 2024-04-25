@@ -42,6 +42,6 @@ Run the project.
 
 ## 🚀 Demo
 
-[https://memento-mori.app/](https://memento-mori.app/)
+[mementomori](https://mementomori.pepinelli.dev/)
 
 
